@@ -31,7 +31,7 @@ class App extends Component {
   }
   // Fetch data from the back-end
   fetchUsers() {
-    axios.get(`https://us-central1-earthworm-6c30e.cloudfunctions.net/api/users/`)
+    axios.get(`${this.server}/api/users/`)
     .then((response) => {
       this.setState({ users: response.data });
     })

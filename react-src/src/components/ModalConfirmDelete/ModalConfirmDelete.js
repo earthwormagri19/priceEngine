@@ -26,7 +26,7 @@ class ModalConfirmDelete extends Component {
     axios({
       method: 'delete',
       responseType: 'json',
-      url: `https://us-central1-earthworm-6c30e.cloudfunctions.net/app/api/users/${params}`,
+      url: `${this.props.server}/api/users/${params}`,
     })
     .then((response) => {
       this.handleClose();
