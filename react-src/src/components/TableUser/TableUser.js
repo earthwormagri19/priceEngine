@@ -13,9 +13,9 @@ class TableUser extends Component {
     users = users.map((user) => 
       <Table.Row key={user._id}>
         <Table.Cell>{user.name}</Table.Cell>
-        <Table.Cell>{user.email}</Table.Cell>
-        <Table.Cell>{user.age}</Table.Cell>
-        <Table.Cell>{user.gender}</Table.Cell>
+        <Table.Cell>{user.phoneNumber}</Table.Cell>
+        <Table.Cell>{user.village}</Table.Cell>
+        <Table.Cell>{user.district}</Table.Cell>
         <Table.Cell>
           <ModalUser
             headerTitle='Edit User'
@@ -46,9 +46,9 @@ class TableUser extends Component {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Email</Table.HeaderCell>
-            <Table.HeaderCell>Age</Table.HeaderCell>
-            <Table.HeaderCell>Gender</Table.HeaderCell>
+            <Table.HeaderCell>Phone Number</Table.HeaderCell>
+            <Table.HeaderCell>Village</Table.HeaderCell>
+            <Table.HeaderCell>District</Table.HeaderCell>
             <Table.HeaderCell>Actions</Table.HeaderCell>
           </Table.Row>
         </Table.Header>

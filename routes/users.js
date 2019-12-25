@@ -42,16 +42,12 @@ router.get('/', (req, res) => {
 // CREATE
 router.post('/', postLimiter, (req, res) => {
 
-  // Validate the age
-  let age = sanitizeAge(req.body.age);
-  if (age < 5 && age != '') return res.status(403).json({ success: false, msg: `You're too young for this.` });
-  else if (age > 130 && age != '') return res.status(403).json({ success: false, msg: `You're too old for this.` });
-
   let newUser = new User({
     name: sanitizeName(req.body.name),
-    email: sanitizeEmail(req.body.email),
-    age: sanitizeAge(req.body.age),
-    gender: sanitizeGender(req.body.gender)
+    fatherName: sanitizeName(req.body.fatherName),
+    phoneNumber: sanitizeGender(req.body.phoneNumber),
+    village: sanitizeName(req.body.village),
+    district: sanitizeAge(req.body.district)
   });
 
   newUser.save()
@@ -62,9 +58,10 @@ router.post('/', postLimiter, (req, res) => {
         result: {
           _id: result._id,
           name: result.name,
-          email: result.email,
-          age: result.age,
-          gender: result.gender
+          fatherName: result.fatherName,
+          phoneNumber: result.phoneNumber,
+          village: result.village,
+          district: result.district
         }
       });
     })

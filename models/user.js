@@ -37,19 +37,21 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'Name is required.'],
     validate: nameValidator
   },
-  email: {
+  fatherName: {
     type: String,
-    required: [true, 'Email is required.'],
+    required: [true, 'Father Name is required.'],
     unique: true,
-    validate: emailValidator
+    validate: nameValidator
   },
-  age: {
-    type: Number,
-    validate: ageValidator
-  },
-  gender: {
+  phoneNumber: {
     type: String,
-    validate: genderValidator
+    
+  },
+  village: {
+    type: String
+  },
+  district: {
+    type: String
   }
 });
 

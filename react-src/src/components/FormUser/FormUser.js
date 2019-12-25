@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Message, Button, Form, Select } from 'semantic-ui-react';
 import axios from 'axios';
 
-const genderOptions = [
-  { key: 'm', text: 'Male', value: 'm' },
-  { key: 'f', text: 'Female', value: 'f' },
-  { key: 'o', text: 'Do Not Disclose', value: 'o' }
+const villageOptions = [
+  { key: 'Aloor', text: 'Aloor', value: 'Aloor' },
+  { key: 'Ankapoor', text: 'Ankapoor', value: 'Ankapoor' },
+  { key: 'Munipally', text: 'Munipally', value: 'Munipally' }
 ]
 
 class FormUser extends Component {
@@ -15,9 +15,11 @@ class FormUser extends Component {
     
     this.state = {
       name: '',
-      email: '',
-      age: '',
-      gender: '',
+      fatherName: '',
+      houseNumber: '',
+      village: '',
+      district: '',
+      phoneNumber: '',
       formClassName: '',
       formSuccessMessage: '',
       formErrorMessage: ''
@@ -35,9 +37,10 @@ class FormUser extends Component {
       .then((response) => {
         this.setState({
           name: response.data.name,
-          email: response.data.email,
-          age: (response.data.age === null) ? '' : response.data.age,
-          gender: response.data.gender,
+          fatherName: response.data.fatherName,
+          phoneNumber: response.data.phoneNumber,
+          houseNumber: response.data.houseNumber,
+          village: response.data.village,
         });
       })
       .catch((err) => {
@@ -55,7 +58,7 @@ class FormUser extends Component {
   }
 
   handleSelectChange(e, data) {
-    this.setState({ gender: data.value });
+    this.setState({ village: data.value });
   }
 
   handleSubmit(e) {
@@ -64,11 +67,11 @@ class FormUser extends Component {
 
     const user = {
       name: this.state.name,
-      email: this.state.email,
-      age: this.state.age,
-      gender: this.state.gender
+      fatherName: this.state.fatherName,
+      phoneNumber: this.state.phoneNumber,
+      houseNumber: this.state.houseNumber,
+      village: this.state.village,
     }
-
     // Acknowledge that if the user id is provided, we're updating via PUT
     // Otherwise, we're creating a new data via POST
     const method = this.props.userID ? 'put' : 'post';
@@ -129,7 +132,6 @@ class FormUser extends Component {
         <Form.Input
           label='Name'
           type='text'
-          placeholder='Elon Musk'
           name='name'
           maxLength='40'
           required
@@ -137,35 +139,40 @@ class FormUser extends Component {
           onChange={this.handleInputChange}
         />
         <Form.Input
-          label='Email'
-          type='email'
-          placeholder='elonmusk@tesla.com'
-          name='email'
+          label='Father Name'
+          type='text'
+          name='fatherName'
           maxLength='40'
           required
-          value={this.state.email}
+          value={this.state.fatherName}
           onChange={this.handleInputChange}
         />
-        <Form.Group widths='equal'>
-          <Form.Input
-            label='Age'
-            type='number'
-            placeholder='18'
-            min={5}
-            max={130}
-            name='age'
-            value={this.state.age}
-            onChange={this.handleInputChange}
-          />
-          <Form.Field
+        <Form.Input
+          label='Phone Number'
+          type='text'
+          name='phoneNumber'
+          maxLength='40'
+          required
+          value={this.state.phoneNumber}
+          onChange={this.handleInputChange}
+        />
+        <Form.Input
+          label='House Number'
+          type='text'
+          name='houseNumber'
+          maxLength='40'
+          required
+          value={this.state.houseNumber}
+          onChange={this.handleInputChange}
+        />
+         <Form.Field
             control={Select}
-            label='Gender'
-            options={genderOptions}
-            placeholder='Gender'
-            value={this.state.gender}
+            label='Village'
+            options={villageOptions}
+            placeholder='Village'
+            value={this.state.village}
             onChange={this.handleSelectChange}
           />
-        </Form.Group>
         <Message
           success
           color='green'
