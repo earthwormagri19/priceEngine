@@ -1,5 +1,5 @@
 {
-  "name": "mern-crud",
+  "name": "earthworm_ops",
   "version": "0.1.0",
   "description": "A simple records system using MongoDB, Express.js, React.js, and Node.js with real-time CRUD operations using Socket.io",
   "main": "server.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cefjoeii/mern-crud.git"
+    "url": "https://github.com/earthwormagri19/earthworm_ops.git"
   },
   "keywords": [],
   "author": "Ceferino Jose II",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cefjoeii/mern-crud/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/cefjoeii/mern-crud#readme",
+  "homepage": "https://eaops1.herokuapp.com/",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "2.8.4",
