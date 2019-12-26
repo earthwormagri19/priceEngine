@@ -2,5 +2,5 @@
 // To run locally use 'mongodb://localhost/mern-crud' instead of process.env.DB
 
 module.exports = {
-  db: 'mongodb+srv://earthwormagri19:monMON123@cluster0-wno0v.mongodb.net/test?retryWrites=true&w=majority/test_db'
+  db: 'mongodb://earthworm19:monMON123!@ds011258.mlab.com:11258/heroku_lvfvcfw1'
 }
