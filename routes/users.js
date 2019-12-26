@@ -45,9 +45,9 @@ router.post('/', postLimiter, (req, res) => {
   let newUser = new User({
     name: sanitizeName(req.body.name),
     fatherName: sanitizeName(req.body.fatherName),
-    phoneNumber: sanitizeGender(req.body.phoneNumber),
+    phoneNumber: req.body.phoneNumber,
     village: sanitizeName(req.body.village),
-    district: sanitizeAge(req.body.district)
+    district: sanitizeName(req.body.district)
   });
 
   newUser.save()
