@@ -25,12 +25,12 @@ const validate = require('mongoose-validator');
 const ItemSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Name is required.']
+    required: [true, 'Name is required.'],
+    unique: true,
   },
   marketRate: {
     type: String,
-    required: [true, 'Father Name is required.'],
-    unique: true,
+    required: [true, 'Father Name is required.']
   },
   zfRate: {
     type: String,
