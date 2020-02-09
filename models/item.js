@@ -28,16 +28,21 @@ const ItemSchema = new mongoose.Schema({
     required: [true, 'Name is required.'],
     unique: true,
   },
+  unit: {
+    type: String,  
+    required: [true, 'unit is required.']
+  },
   marketRate: {
     type: String,
-    required: [true, 'Father Name is required.']
+    required: [true, 'marketRate is required.']
   },
   zfRate: {
-    type: String,
-    
+    type: String,  
+    required: [true, 'zfRate is required.']
   },
   available: {
-    type: String
+    type: String,
+    required: [true, 'available is required.']
   }
 });
 
