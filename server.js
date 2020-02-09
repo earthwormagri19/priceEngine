@@ -43,23 +43,23 @@ app.use(bodyParser.json());
 
 // Enable cross-origin access through the CORS middleware
 // NOTICE: For React development server only!
-var whitelist = ['https://eaops1.herokuapp.com', 'https://zoomfresh.herokuapp.com/index.html' , 'null']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+// var whitelist = ['https://eaops1.herokuapp.com', 'https://zoomfresh.herokuapp.com/index.html' , 'null']
+// var corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
 
 if (process.env.CORS) {
-  app.use(corsOptions);
+  app.use(cors());
 }
 
 // Initialize routes middleware
-app.use('/api/users', require('./routes/users'));
+app.use('/api/items', require('./routes/items'));
 
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {

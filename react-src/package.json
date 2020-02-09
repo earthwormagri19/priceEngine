@@ -34,6 +34,7 @@
     "react": "^15.6.1",
     "react-dev-utils": "^3.0.2",
     "react-dom": "^15.6.1",
+    "react-router-dom": "^5.1.2",
     "react-error-overlay": "^1.0.9",
     "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.71.1",

@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import axios from 'axios';
 
-import TableUser from '../TableUser/TableUser';
-import ModalUser from '../ModalUser/ModalUser';
+import TableItem from '../TableItem/TableItem';
+import ModalItem from '../ModalItem/ModalItem';
 
 import logo from '../../logo.jpeg';
 import './App.css';
+
+// import {Route} from 'react-router-dom": "^5.1.2';
+
+// import Items from '../Items/Items';
 
 class App extends Component {
 
@@ -16,54 +20,54 @@ class App extends Component {
     this.server = process.env.REACT_APP_API_URL || '';
 
     this.state = {
-      users: [],
+      items: [],
       online: 0
     }
 
-    this.fetchUsers = this.fetchUsers.bind(this);
-    this.handleUserAdded = this.handleUserAdded.bind(this);
-    this.handleUserUpdated = this.handleUserUpdated.bind(this);
-    this.handleUserDeleted = this.handleUserDeleted.bind(this);
+    this.fetchItems = this.fetchItems.bind(this);
+    this.handleItemAdded = this.handleItemAdded.bind(this);
+    this.handleItemUpdated = this.handleItemUpdated.bind(this);
+    this.handleItemDeleted = this.handleItemDeleted.bind(this);
   }
 
   componentDidMount() {
-    this.fetchUsers();
+    this.fetchItems();
   }
   // Fetch data from the back-end
-  fetchUsers() {
-    axios.get(`${this.server}/api/users/`)
+  fetchItems() {
+    axios.get(`${this.server}/api/items/`)
     .then((response) => {
-      this.setState({ users: response.data });
+      this.setState({ items: response.data });
     })
     .catch((err) => {
       console.log(err);
     });
   }
 
-  handleUserAdded(user) {
-    let users = this.state.users.slice();
-    users.push(user);
-    this.setState({ users: users });
+  handleItemAdded(item) {
+    let items = this.state.items.slice();
+    items.push(item);
+    this.setState({ items: items });
   }
 
-  handleUserUpdated(user) {
-    let users = this.state.users.slice();
-    for (let i = 0, n = users.length; i < n; i++) {
-      if (users[i]._id === user._id) {
-        users[i].name = user.name;
-        users[i].email = user.email;
-        users[i].age = user.age;
-        users[i].gender = user.gender;
+  handleItemUpdated(item) {
+    let items = this.state.items.slice();
+    for (let i = 0, n = items.length; i < n; i++) {
+      if (items[i]._id === item._id) {
+        items[i].name = item.name;
+        items[i].marketRate = item.marketRate;
+        items[i].zfRate = item.zfRate;
+        items[i].available = item.available;
         break; // Stop this loop, we found it!
       }
     }
-    this.setState({ users: users });
+    this.setState({ items: items });
   }
 
-  handleUserDeleted(user) {
-    let users = this.state.users.slice();
-    users = users.filter(u => { return u._id !== user._id; });
-    this.setState({ users: users });
+  handleItemDeleted(item) {
+    let items = this.state.items.slice();
+    items = items.filter(i => { return i._id !== item._id; });
+    this.setState({ items: items });
   }
 
   render() {
@@ -77,21 +81,23 @@ class App extends Component {
           </div>
         </div>
         <Container>
-          <ModalUser
-            headerTitle='Add Farmer'
-            buttonTriggerTitle='Add Farmer'
+          <ModalItem
+            headerTitle='Add item'
+            buttonTriggerTitle='Add item'
             buttonSubmitTitle='Add'
             buttonColor='green'
-            onUserAdded={this.handleUserAdded}
+            onItemAdded={this.handleItemAdded}
             server={this.server}
           />
-          <TableUser
-            onUserUpdated={this.handleUserUpdated}
-            onUserDeleted={this.handleUserDeleted}
-            users={this.state.users}
+          <TableItem
+            onItemUpdated={this.handleItemUpdated}
+            items={this.state.items}
             server={this.server}
           />
         </Container>
+        {/* <Route path="/items">
+          <Items/>
+        </Route> */}
         <br/>
       </div>
     );
