@@ -55,7 +55,7 @@ app.use(bodyParser.json());
 // }
 
 if (process.env.CORS) {
-  app.use(cors());
+  app.use(cors({origin: 'null'}));
 }
 
 // Initialize routes middleware
@@ -63,15 +63,15 @@ app.use('/api/items', require('./routes/items'));
 
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'null');
+  // // Website you wish to allow to connect
+  // res.setHeader('Access-Control-Allow-Origin', 'null');
 
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  // // Request methods you wish to allow
+  // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  next();
+  // // Request headers you wish to allow
+  // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  // next();
   if (res.headersSent) return next(err);
   res.status(400).json({ err: err });
 });
