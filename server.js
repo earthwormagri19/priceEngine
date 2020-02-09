@@ -55,7 +55,13 @@ app.use(bodyParser.json());
 // }
 
 if (process.env.CORS) {
-  app.use(cors({origin: 'null'}));
+  app.use(cors({
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'origin': '*',
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+  }));
 }
 
 // Initialize routes middleware
