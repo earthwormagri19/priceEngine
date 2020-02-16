@@ -43,15 +43,19 @@ app.use(bodyParser.json());
 
 // Enable cross-origin access through the CORS middleware
 // NOTICE: For React development server only!
-if (process.env.CORS) {
-  app.use(cors());
-}
+// if (process.env.CORS) {
+//   app.use(cors());
+// }
 
 // Initialize routes middleware
 app.use('/api/items', require('./routes/items'));
+app.use('/api/orders', require('./routes/orders'));
 
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE');
   if (res.headersSent) return next(err);
   res.status(400).json({ err: err });
 });
