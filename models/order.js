@@ -18,6 +18,9 @@ const OrderSchema = new mongoose.Schema({
   },
   items: {
     type: Array
+  },
+  totalAmount: {
+    type: Number
   }
 });
 const Order = module.exports = mongoose.model('order', OrderSchema);

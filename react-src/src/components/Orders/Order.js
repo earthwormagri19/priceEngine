@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Message, Button, Form, Select } from 'semantic-ui-react';
 import axios from 'axios';
 import './Order.css';
+import logo from '../../zf_logo.png'
 
 class Order extends Component {
 
@@ -14,9 +15,12 @@ class Order extends Component {
         phoneNumber: '',
         orderNumber: '',
         items: [],
-        landMark: ''
+        landMark: '',
+        totalAmount: ''
     }
+    this.downLoadInvoice = this.downLoadInvoice.bind(this);
   }
+
 
   componentWillMount() {
     // Fill in the form with the appropriate data if user id is provided
@@ -29,7 +33,8 @@ class Order extends Component {
             phoneNumber: response.data.phoneNumber,
             orderNumber: response.data.orderNumber,
             landMark: response.data.landMark,
-            items: response.data.items
+            items: response.data.items,
+            totalAmount: response.data.totalAmount
         });
       })
       .catch((err) => {
@@ -37,119 +42,92 @@ class Order extends Component {
       });
     }
   }
+
+    downLoadInvoice() {
+    }   
   render() {
 
+    let items = this.state.items;
+    var totalAmount = 0;
+    items.forEach(function(item){
+        if(item.rate) {
+            totalAmount = totalAmount + Number(item.rate);
+        }
+    });
+
+    items = items.map((item) => 
+        <tr className='item'>
+            <td>
+                {item.item}
+            </td>
+            <td>
+                {item.quantity}
+            </td>  
+            <td>
+                ₹{item.rate}
+            </td>            
+        </tr>
+    );
     return (
-        <div className='invoice-box'>
+        <div id='invoice' className='invoice-box'>
         <table cellpadding='0' cellspacing='0'>
             <tr className='top'>
                 <td colspan='2'>
                     <table>
                         <tr>
                             <td className='title'>
-                                <img src='https://www.sparksuite.com/images/logo.png'/>
-                            </td>
-                            
-                            <td>
-                                Invoice #: 123<br/>
-                                Created: January 1, 2015<br/>
-                                Due: February 1, 2015
-                            </td>
+                                <img src={logo} className='App-logo' alt='logo' />
+                            </td>                          
                         </tr>
                     </table>
                 </td>
-            </tr>
-            
+            </tr>          
             <tr className='information'>
                 <td colspan='2'>
                     <table>
                         <tr>
                             <td>
-                                Sparksuite, Inc.<br/>
-                                12345 Sunny Road<br/>
-                                Sunnyville, CA 12345
-                            </td>
-                            
-                            <td>
-                                Acme Corp.<br/>
-                                John Doe<br/>
-                                john@example.com
+                                Invoice #: {this.state.orderNumber}<br/>
+                                Customer Name : {this.state.name}<br/>
+                                Address : {this.state.address}<br/>
+                                Phone Number : {this.state.phoneNumber}
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            
-            <tr className='heading'>
-                <td>
-                    Payment Method
-                </td>
-                
-                <td>
-                    Check #
-                </td>
-            </tr>
-            
-            <tr className='details'>
-                <td>
-                    Check
-                </td>
-                
-                <td>
-                    1000
-                </td>
-            </tr>
-            
             <tr className='heading'>
                 <td>
                     Item
                 </td>
-                
                 <td>
-                    Price
+                    Quantity
+                </td>
+                <td>
+                    Rate
+                </td>
+            </tr>      
+            {items}
+            <tr className='total'>
+                <td></td>  
+                <td>GST:</td>  
+                <td>
+                    ₹0.00
                 </td>
             </tr>
-            
-            <tr className='item'>
-                <td>
-                    Website design
-                </td>
-                
-                <td>
-                    $300.00
-                </td>
-            </tr>
-            
-            <tr className='item'>
-                <td>
-                    Hosting (3 months)
-                </td>
-                
-                <td>
-                    $75.00
-                </td>
-            </tr>
-            
-            <tr className='item last'>
-                <td>
-                    Domain name (1 year)
-                </td>
-                
-                <td>
-                    $10.00
-                </td>
-            </tr>
-            
             <tr className='total'>
                 <td></td>
-                
+                <td>Total:</td>  
                 <td>
-                   Total: $385.00
+                    ₹{totalAmount}
                 </td>
             </tr>
         </table>
+        {/* <div>
+             <button type="button" class="ui green button" onClick={this.downLoadInvoice}>Download Invoice</button> 
+        </div>  */}
     </div>
-      
+   
     );
   }
 }

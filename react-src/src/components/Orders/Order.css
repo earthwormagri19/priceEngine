@@ -1,5 +1,4 @@
 .invoice-box {
-    max-width: 800px;
     margin: auto;
     padding: 30px;
     border: 1px solid #eee;
@@ -11,7 +10,6 @@
 }
 
 .invoice-box table {
-    width: 100%;
     line-height: inherit;
     text-align: left;
 }

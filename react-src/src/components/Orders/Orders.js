@@ -17,11 +17,8 @@ class Orders extends Component {
     }
 
     this.fetchOders = this.fetchOders.bind(this);
-    this.handleUploadOrders = this.handleUploadOrders.bind(this);
-    this.handleItemUpdated = this.handleItemUpdated.bind(this);
-    this.handleItemDeleted = this.handleItemDeleted.bind(this);
-    this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.onClickHandler = this.onClickHandler.bind(this);
+    this.selectOrders = this.selectOrders.bind(this);
+    this.uploadOrders = this.uploadOrders.bind(this);
   }
 
   componentDidMount() {
@@ -38,32 +35,14 @@ class Orders extends Component {
     });
   }
 
-  handleUploadOrders(item) {
-    window.print();
-  }
-
-  handleItemUpdated(item) {
-    let items = this.state.items.slice();
-    for (let i = 0, n = items.length; i < n; i++) {
-      if (items[i]._id === item._id) {
-        items[i].name = item.name;
-        items[i].marketRate = item.marketRate;
-        items[i].zfRate = item.zfRate;
-        items[i].available = item.available;
-        break; // Stop this loop, we found it!
-      }
-    }
-    this.setState({ items: items });
-  }
-
-  onChangeHandler(event) {
+  selectOrders(event) {
     this.setState({
       selectedFile: event.target.files[0],
       loaded: 0,
     })
   }
 
-  onClickHandler() {
+  uploadOrders() {
     let self = this;
     let reader = new FileReader();
     reader.readAsText(this.state.selectedFile);
@@ -78,18 +57,35 @@ class Orders extends Component {
         for(var j=0;j<headers.length;j++){
           obj[headers[j]] = currentline[j];
         }
+        let notveg = ['Order Number', 'Name', 'Phone Number', 'Address', 'Landmark', 'Notes'];
+        var items = [];
+        Object.keys(obj).forEach(k => 
+          (!obj[k] && obj[k] !== undefined || obj[k] ==='') && delete obj[k]
+        );
+        Object.keys(obj).forEach(function(k){
+          if((notveg.indexOf(k) > -1) == false) {
+            var splitQuantity = obj[k].split("-");
+            items.push({
+              'item': k,
+              'quantity': splitQuantity[0],
+              'rate' : splitQuantity[1] 
+            });
+            delete obj[k];
+          }
+        });
         result.push({
           name : obj.Name,
-          phoneNumber: obj.PhoneNumber,
+          phoneNumber: obj['Phone Number'],
           address: obj.Address,
-          orderNumber: obj.OrderNumber,
-          landMark: obj.LandMark
+          orderNumber: obj['Order Number'],
+          landMark: obj.Landmark,
+          items: items
         });
       } 
       axios({
         method: 'post',
         responseType: 'json',
-        url: `http://localhost:4200/api/orders/`,
+        url: `${this.props.server}/api/orders/`,
         data: result
       }).then((response) => {
         self.setState({ orders: response.data });
@@ -100,18 +96,11 @@ class Orders extends Component {
     
   }
 
-  handleItemDeleted(item) {
-    let items = this.state.items.slice();
-    items = items.filter(i => { return i._id !== item._id; });
-    this.setState({ items: items });
-  }
-
-
   render() {
     return (
       <Container>
-         <input type="file" class="ui green button"  name="file" onChange={this.onChangeHandler}/>
-         <button type="button" class="ui green button" onClick={this.onClickHandler}>Upload</button> 
+         <input type="file" class="ui green button"  name="file" onChange={this.selectOrders}/>
+         <button type="button" class="ui green button" onClick={this.uploadOrders}>Upload</button> 
          <OrdersTable
             orders={this.state.orders}
             server={this.server}

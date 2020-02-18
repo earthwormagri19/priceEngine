@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'semantic-ui-react';
-import logo from '../../zf_logo.png';
 import Order from '../Orders/Order';
 
 
@@ -13,10 +12,9 @@ class ModalOrder extends Component {
             <Modal
                 trigger={<Button color={this.props.buttonColor}>{this.props.buttonTriggerTitle}</Button>}
                 dimmer='inverted'
-                size='tiny'
+                size='large'
                 closeIcon='close'
             >
-            <Modal.Header><img src={logo} className='App-logo' alt='logo' /></Modal.Header>
             <Modal.Content>
                 <Order
                     buttonSubmitTitle={this.props.buttonSubmitTitle}
