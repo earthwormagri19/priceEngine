@@ -85,7 +85,7 @@ class Orders extends Component {
       axios({
         method: 'post',
         responseType: 'json',
-        url: `${this.props.server}/api/orders/`,
+        url: `http://localhost:4200/api/orders/`,
         data: result
       }).then((response) => {
         self.setState({ orders: response.data });

@@ -89,8 +89,9 @@ class Order extends Component {
                             <td>
                                 Invoice #: {this.state.orderNumber}<br/>
                                 Customer Name : {this.state.name}<br/>
-                                Address : {this.state.address}<br/>
-                                Phone Number : {this.state.phoneNumber}
+                                Phone Number : {this.state.phoneNumber}<br/>
+                                Address : {this.state.address}<br/> 
+                                Landmark : {this.state.landMark}
                             </td>
                         </tr>
                     </table>
