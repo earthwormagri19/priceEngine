@@ -123,6 +123,14 @@ class Order extends Component {
                     ₹{totalAmount}
                 </td>
             </tr>
+
+            <tr className='heading'>
+                <td>   
+                    Next Order date : 25/02/2020 (Tuesday)<br/>
+                    Next Delivery date : 26/02/2020  (Wednesday)<br/>   
+                    Thank you for choosing ZoomFresh !!!
+                </td>
+            </tr>
         </table>
         {/* <div>
              <button type="button" class="ui green button" onClick={this.downLoadInvoice}>Download Invoice</button> 
