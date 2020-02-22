@@ -49,9 +49,12 @@ class Order extends Component {
 
     let items = this.state.items;
     var totalAmount = 0;
-    items.forEach(function(item){
+    items.forEach(function(item, i){
         if(item.rate) {
             totalAmount = totalAmount + Number(item.rate);
+        }
+        else {
+            delete items[i];
         }
     });
 
