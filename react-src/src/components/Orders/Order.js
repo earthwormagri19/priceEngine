@@ -117,18 +117,18 @@ class Order extends Component {
                 </td>
             </tr>
             <tr className='total'>
-                <td></td>
-                <td>Total:</td>  
+                <td>total number of item(s): <strong>{this.state.items.length}</strong></td>
+                <td>Total Amount:</td>  
                 <td>
                     ₹{totalAmount}
                 </td>
             </tr>
 
-            <tr className='heading'>
+            <tr className='headinformationing'>
                 <td>   
-                    Next Order date : 25/02/2020 (Tuesday)<br/>
-                    Next Delivery date : 26/02/2020  (Wednesday)<br/>   
-                    Thank you for choosing ZoomFresh !!!
+                    <strong>Next Order date : </strong>25/02/2020 (Tuesday)<br/>
+                    <strong>Next Delivery date : </strong>26/02/2020  (Wednesday)<br/>   
+                    Thank you for your order !!!
                 </td>
             </tr>
         </table>
