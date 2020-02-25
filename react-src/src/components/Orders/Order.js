@@ -120,7 +120,7 @@ class Order extends Component {
                 </td>
             </tr>
             <tr className='total'>
-                <td>total number of item(s): <strong>{this.state.items.length}</strong></td>
+                {/* <td>total number of item(s): <strong>{this.state.items.length}</strong></td> */}
                 <td>Total Amount:</td>  
                 <td>
                     ₹{totalAmount}
@@ -129,8 +129,8 @@ class Order extends Component {
 
             <tr className='headinformationing'>
                 <td>   
-                    <strong>Next Order date : </strong>25/02/2020 (Tuesday)<br/>
-                    <strong>Next Delivery date : </strong>26/02/2020  (Wednesday)<br/>   
+                    <strong>Next Order date : </strong>27/02/2020 (Thursday)<br/>
+                    <strong>Next Delivery date : </strong>28/02/2020  (Friday)<br/>   
                     Thank you for your order !!!
                 </td>
             </tr>
