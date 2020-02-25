@@ -120,6 +120,7 @@ class Order extends Component {
                 </td>
             </tr>
             <tr className='total'>
+                <td></td>
                 {/* <td>total number of item(s): <strong>{this.state.items.length}</strong></td> */}
                 <td>Total Amount:</td>  
                 <td>
