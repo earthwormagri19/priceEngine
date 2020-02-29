@@ -130,8 +130,8 @@ class Order extends Component {
 
             <tr className='headinformationing'>
                 <td>   
-                    <strong>Next Order date : </strong>29/02/2020 (Saturday)<br/>
-                    <strong>Next Delivery date : </strong>01/03/2020  (Sunday)<br/>   
+                    <strong>Next Order window : </strong>02/03/2020 (Monday) 9AM - 03/03/2010 (Tuesday) 9PM<br/>
+                    <strong>Next Delivery date : </strong>04/03/2020  (Wednesday)<br/>   
                     Thank you for your order !!!
                 </td>
             </tr>

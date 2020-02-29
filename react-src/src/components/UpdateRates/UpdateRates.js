@@ -77,6 +77,7 @@ class UpdateRates extends Component {
         />
         <TableItem
           onItemUpdated={this.handleItemUpdated}
+          onItemDeleted = {this.onItemDeleted}
           items={this.state.items}
           server={this.server}
         />
