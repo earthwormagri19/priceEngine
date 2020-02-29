@@ -3,14 +3,14 @@ import { Message, Button, Form, Select } from 'semantic-ui-react';
 import axios from 'axios';
 
 const unitOptions = [
-  { key: 'kg', text: 'Kg', value: 'kg' },
-  { key: 'piece', text: 'Piece', value: 'piece' },
-  { key: 'bunch', text: 'Bunch', value: 'bunch' }
+  { key: 'Kg', text: 'Kg', value: 'Kg' },
+  { key: 'Piece', text: 'Piece', value: 'Piece' },
+  { key: 'Bunch', text: 'Bunch', value: 'Bunch' }
 ]
 
 const availabilityOptions = [
-  { key: 'available', text: 'Available', value: 'available' },
-  { key: 'notAvailable', text: 'Not Available', value: 'notAvailable' },
+  { key: 'Available', text: 'Available', value: 'Available' },
+  { key: 'Notavailable', text: 'Not Available', value: 'Notavailable' },
 ]
 
 class FormItem extends Component {
@@ -34,8 +34,8 @@ class FormItem extends Component {
 
   componentWillMount() {
     // Fill in the form with the appropriate data if user id is provided
-    if (this.props.userID) {
-      axios.get(`${this.props.server}/api/items/${this.props.userID}`)
+    if (this.props.itemID) {
+      axios.get(`${this.props.server}/api/items/${this.props.itemID}`)
       .then((response) => {
         this.setState({
           name: response.data.name,
@@ -80,8 +80,8 @@ class FormItem extends Component {
     }
     // Acknowledge that if the user id is provided, we're updating via PUT
     // Otherwise, we're creating a new data via POST
-    const method = this.props.userID ? 'put' : 'post';
-    const params = this.props.userID ? this.props.userID : '';
+    const method = this.props.itemID ? 'put' : 'post';
+    const params = this.props.itemID ? this.props.itemID : '';
 
     axios({
       method: method,
@@ -95,7 +95,7 @@ class FormItem extends Component {
         formSuccessMessage: response.data.msg
       });
 
-      if (!this.props.userID) {
+      if (!this.props.itemID) {
         this.setState({
           name: '',
           unit: '',
@@ -151,6 +151,7 @@ class FormItem extends Component {
           options={unitOptions}
           placeholder='Unit'
           value={this.state.unit}
+          selected= {this.state.unit}
           onChange={this.handleUnitChange}
         />
         <Form.Input
@@ -177,6 +178,7 @@ class FormItem extends Component {
           options={availabilityOptions}
           placeholder='Availability'
           value={this.state.available}
+          selected= {this.state.available}
           onChange={this.handleAvailabilityChange}
         />
         <Message
