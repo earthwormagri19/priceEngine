@@ -9,14 +9,10 @@ import {
 
 import Orders from '../Orders/Orders';  
 import UpdateRates from '../UpdateRates/UpdateRates';  
+import SignIn from '../SignIn/SignIn'; 
 
 import logo from '../../logo.jpeg';
 import './App.css';
-
-// import {Route} from 'react-router-dom": "^5.1.2';
-
-// import Items from '../Items/Items';
-
 class App extends Component {
 
   constructor() {
@@ -35,17 +31,24 @@ class App extends Component {
         </div>
         <Router>
           <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/orders">Orders</Link>
-                </li>
-                <li>
-                  <Link to="/rates">View/Update Rates</Link>
-                </li>
-              </ul>
-            </nav>
             <Switch>
+              <Route path="/">
+                <SignIn/>
+              </Route>
+              <Route path="/landing">
+                <div>
+                  <nav>
+                    <ul>
+                      <li>
+                        <Link to="/orders">Orders</Link>
+                      </li>
+                      <li>
+                        <Link to="/rates">View/Update Rates</Link>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </Route>
               <Route path="/orders">
                 <Orders />
               </Route>
