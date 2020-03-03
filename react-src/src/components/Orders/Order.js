@@ -130,7 +130,7 @@ class Order extends Component {
 
             <tr className='headinformationing'>
                 <td>   
-                    <strong>Do you know you can get discount? <br/> Refer your friends and get ₹10 for each referral discount on next order*</strong> <br/>
+                    <strong>Do you know you can get discount on your next order? <br/> Refer your friends/Relatives and get ₹10 for each referral</strong> <br/>
                     <strong>Next Order date : </strong>05/03/2020(Thursday) <br/>
                     <strong>Next Delivery date : </strong>06/03/2020 (Friday)<br/>   
                     Thank you for your order !!!
