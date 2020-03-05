@@ -21,6 +21,9 @@ const OrderSchema = new mongoose.Schema({
   },
   totalAmount: {
     type: Number
+  },
+  referrals: {
+    type: Number
   }
 });
 const Order = module.exports = mongoose.model('order', OrderSchema);
