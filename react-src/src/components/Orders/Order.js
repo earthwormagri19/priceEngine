@@ -77,15 +77,15 @@ class Order extends Component {
     // }  
   render() {
     let items = this.state.items;
-    // var subTotal = 0;
-    // items.forEach(function(item, i){
-    //     if(item.rate) {
-    //         subTotal = subTotal + Number(item.rate);
-    //     }
-    //     else {
-    //         delete items[i];
-    //     }
-    // });
+    var subTotal = 0;
+    items.forEach(function(item, i){
+        if(item) {
+            subTotal = subTotal + Number(item.rate);
+        }
+        else {
+            delete items[i];
+        }
+    });
 
    
     // var obj = this.fun(subTotal);
@@ -148,7 +148,7 @@ class Order extends Component {
             {items}
             <tr className='total'>
                 <td></td>  
-                <td>number of items {items.length} | Sub total:</td>  
+                <td>Sub total:</td>  
                 <td>
                     ₹{this.state.subTotal}
                 </td>
