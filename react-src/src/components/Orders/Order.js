@@ -188,7 +188,7 @@ class Order extends Component {
             <tr className='headinformationing'>
                 <td>   
                     <strong>Next Order window : </strong>09/03/2020 (Sunday) 9AM - 10/03/2010 (Monday) 9PM<br/>
-                    <strong>Next Delivery date : </strong>11/03/2020  (Sunday)<br/>   
+                    <strong>Next Delivery date : </strong>11/03/2020  (Tuesday)<br/>   
                     Thank you for your order !!!
                 </td>
             </tr>
