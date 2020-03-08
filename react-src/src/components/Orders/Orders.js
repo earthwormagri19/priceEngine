@@ -57,7 +57,7 @@ class Orders extends Component {
         for(var j=0;j<headers.length;j++){
           obj[headers[j]] = currentline[j];
         }
-        let notveg = ['Order Number', 'Name', 'Phone Number', 'Address', 'Landmark', 'Notes', 'Referrals'];
+        let notveg = ['Order Number', 'Name', 'Phone Number', 'Address', 'Landmark', 'Notes', 'Referrals', 'Discount'];
         var items = [];
         Object.keys(obj).forEach(k => 
           (!obj[k] && obj[k] !== undefined || obj[k] ==='') && delete obj[k]
@@ -81,6 +81,7 @@ class Orders extends Component {
           landMark: obj.Landmark,
           items: items,
           referrals: obj.Referrals,
+          discount: obj.Discount
         });
       } 
       axios({

@@ -16,10 +16,13 @@ class Order extends Component {
         orderNumber: '',
         items: [],
         landMark: '',
-        totalAmount: ''
+        totalAmount: '',
+        discount: '',
+        referralDiscount: '',
+        referrals: ''
+
     }
     this.downLoadInvoice = this.downLoadInvoice.bind(this);
-    this.fun = this.fun.bind(this);
   }
 
 
@@ -35,8 +38,12 @@ class Order extends Component {
             orderNumber: response.data.orderNumber,
             landMark: response.data.landMark,
             items: response.data.items,
-            totalAmount: response.data.totalAmount,
-            referrals: response.data.referrals
+            subTotal: response.data.subTotal,
+            referrals: response.data.referrals,
+            referralDiscount: response.data.referrals,
+            discount: response.data.discount,
+            totalAmount: response.data.totalAmount
+           
         });
       })
       .catch((err) => {
@@ -47,37 +54,44 @@ class Order extends Component {
 
     downLoadInvoice() {
     } 
-    fun(subTotal) {
-        var totalAmount = 0;
-        var referralDiscount = 0;
-        if(this.state.referrals && this.state.referrals >0) {
-            referralDiscount = Number(this.state.referrals) * 10;
-            totalAmount = subTotal - referralDiscount;
-        }
-        else {
-            totalAmount = subTotal;
-        }
-        return {
-            referralDiscount: referralDiscount,
-            totalAmount: totalAmount
-        }
-    }  
+    // fun(subTotal) {
+    //     var totalAmount = 0;
+    //     var referralDiscount = 0;
+    //     var promotionalDiscount = 0;
+    //     if(this.state.referrals && this.state.referrals >0) {
+    //         referralDiscount = Number(this.state.referrals) * 10;
+    //         totalAmount = subTotal - referralDiscount;
+    //     }
+    //     else {
+    //         totalAmount = subTotal;
+    //     }
+    //     if(this.state.discount) {
+    //         promotionalDiscount = (subTotal * this.state.discount) /100;
+    //         totalAmount = totalAmount -  promotionalDiscount;
+    //     }
+    //     return {
+    //         referralDiscount: referralDiscount,
+    //         totalAmount: totalAmount,
+    //         promotionalDiscount: promotionalDiscount
+    //     }
+    // }  
   render() {
     let items = this.state.items;
-    var subTotal = 0;
-    items.forEach(function(item, i){
-        if(item.rate) {
-            subTotal = subTotal + Number(item.rate);
-        }
-        else {
-            delete items[i];
-        }
-    });
+    // var subTotal = 0;
+    // items.forEach(function(item, i){
+    //     if(item.rate) {
+    //         subTotal = subTotal + Number(item.rate);
+    //     }
+    //     else {
+    //         delete items[i];
+    //     }
+    // });
 
    
-    var obj = this.fun(subTotal);
-    var totalAmount = obj.totalAmount;
-    var referralDiscount = obj.referralDiscount;
+    // var obj = this.fun(subTotal);
+    // var totalAmount = obj.totalAmount;
+    // var referralDiscount = obj.referralDiscount;
+    // var promotionalDiscount = obj.promotionalDiscount;
     items = items.map((item) => 
         <tr className='item'>
             <td>
@@ -134,9 +148,9 @@ class Order extends Component {
             {items}
             <tr className='total'>
                 <td></td>  
-                <td>Sub total:</td>  
+                <td>number of items {items.length} | Sub total:</td>  
                 <td>
-                    ₹{subTotal}
+                    ₹{this.state.subTotal}
                 </td>
             </tr>
             <tr className='total'>
@@ -149,26 +163,32 @@ class Order extends Component {
             <tr className='total'>
                 <td></td>
                 <td>Referral Discount {this.state.referrals} X ₹10:<br/>
-                    {this.state.referrals < 1  ? 'You have no referrals, refer your friends to get discount' : ''}
+                    {this.state.referrals < 1  ? 'No referrals, Pleae refer your friends to get discount' : ''}
                 </td>  
 
                 <td>
-                    - ₹{referralDiscount}
+                    -₹{this.state.referralDiscount}
                 </td>
             </tr>
             <tr className='total'>
                 <td></td>
-                {/* <td>total number of item(s): <strong>{this.state.items.length}</strong></td> */}
+                <td>Other Discount:</td>  
+                <td>
+                    -₹{this.state.discount}
+                </td>
+            </tr>
+            <tr className='total'>
+                <td></td>
                 <td>Total Amount:</td>  
                 <td>
-                    ₹{totalAmount}
+                    ₹{this.state.totalAmount}
                 </td>
             </tr>
 
             <tr className='headinformationing'>
                 <td>   
-                    <strong>Next Order window : </strong>05/03/2020 (Thursday) 9PM - 07/03/2010 (Saturday) 9PM<br/>
-                    <strong>Next Delivery date : </strong>08/03/2020  (Sunday)<br/>   
+                    <strong>Next Order window : </strong>09/03/2020 (Sunday) 9AM - 10/03/2010 (Monday) 9PM<br/>
+                    <strong>Next Delivery date : </strong>11/03/2020  (Sunday)<br/>   
                     Thank you for your order !!!
                 </td>
             </tr>

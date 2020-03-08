@@ -20,6 +20,29 @@ const postLimiter = new RateLimit({
 router.get('/:id', (req, res) => {
   Order.findById(req.params.id)
     .then((result) => {
+      let items = result.items;
+      let subTotal = 0;
+      let referralDiscount = 0;
+      let promotionalDiscount = 0;
+      items.forEach(function(item, i){
+          if(item.rate) {
+              subTotal = subTotal + Number(item.rate);
+          }
+          else {
+              delete items[i];
+          }
+      });  
+      if(result.referrals && result.referrals >0) {
+        referralDiscount = Number(result.referrals) * 10;
+      }
+      if(result.discount) {
+          promotionalDiscount = (subTotal * result.discount) /100;
+      }
+      result.items = items;
+      result.subTotal = subTotal;
+      result.referralDiscount = referralDiscount;
+      result.discount = promotionalDiscount;
+      result.totalAmount = subTotal - (referralDiscount + promotionalDiscount);
       res.json(result);
     })
     .catch((err) => {

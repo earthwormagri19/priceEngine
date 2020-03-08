@@ -19,10 +19,16 @@ const OrderSchema = new mongoose.Schema({
   items: {
     type: Array
   },
-  totalAmount: {
+  subTotal: {
     type: Number
   },
   referrals: {
+    type: Number
+  },
+  discount: {
+    type : Number
+  },
+  totalAmount: {
     type: Number
   }
 });
