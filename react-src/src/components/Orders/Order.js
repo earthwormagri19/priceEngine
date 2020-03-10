@@ -190,6 +190,9 @@ class Order extends Component {
                 <td>   
                     <strong>Next Order  : </strong>12/03/2020 (Thursday)   9AM - 9PM<br/>
                     <strong>Next Delivery date : </strong>13/03/2020 (Friday)<br/>   
+                    <strong>For Questions/Orders :</strong> Call/WhatsApp - 6303221332<br/>
+                    <strong>Like our FaceBook page for updates:</strong><br/>
+                    https://www.facebook.com/zoomfresh.in <br/>
                     Thank you for your order !!!
                 </td>
             </tr>
