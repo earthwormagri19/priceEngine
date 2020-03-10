@@ -163,7 +163,8 @@ class Order extends Component {
             <tr className='total'>
                 <td></td>
                 <td>Referral Discount {this.state.referrals} X ₹10:<br/>
-                    {this.state.referrals < 1  ? 'No referrals, Pleae refer your friends to get discount' : ''}
+                    {this.state.referrals < 1  ? 'You have no referrals' : ''} <br/>
+                    {this.state.referrals < 1  ? 'Pleae see referral page for details or call ZoomFresh' : ''} <br/>
                 </td>  
 
                 <td>
@@ -187,8 +188,8 @@ class Order extends Component {
 
             <tr className='headinformationing'>
                 <td>   
-                    <strong>Next Order window : </strong>09/03/2020 (Sunday) 9AM - 10/03/2010 (Monday) 9PM<br/>
-                    <strong>Next Delivery date : </strong>11/03/2020  (Tuesday)<br/>   
+                    <strong>Next Order  : </strong>12/03/2020 (Thursday)   9AM - 9PM<br/>
+                    <strong>Next Delivery date : </strong>13/03/2020 (Friday)<br/>   
                     Thank you for your order !!!
                 </td>
             </tr>
