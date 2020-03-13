@@ -188,8 +188,8 @@ class Order extends Component {
 
             <tr className='headinformationing'>
                 <td>   
-                    <strong>Next Order  : </strong>12/03/2020 (Thursday)   9AM - 9PM<br/>
-                    <strong>Next Delivery date : </strong>13/03/2020 (Friday)<br/>   
+                    <strong>Next Order  : </strong>14/03/2020 (Saturday) 9AM - 9PM<br/>
+                    <strong>Next Delivery date : </strong>15/03/2020 (Sunday)<br/>   
                     <strong>For Questions/Orders :</strong> Call/WhatsApp - 6303221332<br/>
                     <strong>Like our FaceBook page for updates:</strong><br/>
                     https://www.facebook.com/zoomfresh.in <br/>
