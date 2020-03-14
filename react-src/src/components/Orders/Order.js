@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Message, Button, Form, Select } from 'semantic-ui-react';
 import axios from 'axios';
 import './Order.css';
-import logo from '../../zf_logo.png'
+import logo from '../../zf_logo.png';
+import orderLogo from '../../order.png';
 
 class Order extends Component {
 
@@ -188,9 +189,8 @@ class Order extends Component {
 
             <tr className='headinformationing'>
                 <td>   
-                    <strong>Next Order  : </strong>14/03/2020 (Saturday) 9AM - 9PM<br/>
-                    <strong>Next Delivery date : </strong>15/03/2020 (Sunday)<br/>   
-                    <strong>For Questions/Orders :</strong> Call/WhatsApp - 6303221332<br/>
+                    <strong>Next Delivery date : </strong>18/03/2020 (Wednesday)<br/>   
+                    <strong>For Questions :</strong> Call/WhatsApp - 6303221332<br/>
                     <strong>Like our FaceBook page for updates:</strong><br/>
                     https://www.facebook.com/zoomfresh.in <br/>
                     Thank you for your order !!!
