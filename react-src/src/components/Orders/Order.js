@@ -161,7 +161,7 @@ class Order extends Component {
                     ₹0.00
                 </td>
             </tr>
-            <tr className='total'>
+            {/* <tr className='total'>
                 <td></td>
                 <td>Referral Discount {this.state.referrals} X ₹10:<br/>
                     {this.state.referrals < 1  ? 'You have no referrals' : ''} <br/>
@@ -178,7 +178,7 @@ class Order extends Component {
                 <td>
                     -₹{this.state.discount}
                 </td>
-            </tr>
+            </tr> */}
             <tr className='total'>
                 <td></td>
                 <td>Total Amount:</td>  
@@ -188,12 +188,11 @@ class Order extends Component {
             </tr>
 
             <tr className='headinformationing'>
-                <td>   
-                    <strong>Next Delivery date : </strong>22/03/2020 (Sunday)<br/>   
+                <td>
                     <strong>For Questions :</strong> Call/WhatsApp - 6303221332<br/>
-                    <strong>Like our FaceBook page for updates:</strong><br/>
+                    <strong>Please write a review on facebook:</strong><br/>
                     https://www.facebook.com/zoomfresh.in <br/>
-                    Thank you for your order !!!
+                    Thank you for your order !!! Stay Safe!!!
                 </td>
             </tr>
         </table>
