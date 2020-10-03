@@ -381,10 +381,6 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-
-
-const express = require('express');
-const router = express.Router();
 var request = require('request');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const csvWriter = createCsvWriter({
