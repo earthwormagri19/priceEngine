@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Message, Button, Form, Select } from 'semantic-ui-react';
 import axios from 'axios';
 import './Order.css';
-import logo from '../../zf_logo.png';
+import logo from '../../logo_new1.png';
 import orderLogo from '../../order.png';
 
 class Order extends Component {
@@ -20,7 +20,8 @@ class Order extends Component {
         totalAmount: '',
         discount: '',
         referralDiscount: '',
-        referrals: ''
+        referrals: '',
+        date: ''
 
     }
     this.downLoadInvoice = this.downLoadInvoice.bind(this);
@@ -30,7 +31,7 @@ class Order extends Component {
   componentWillMount() {
     // Fill in the form with the appropriate data if user id is provided
     if (this.props.orderId) {
-      axios.get(`${this.props.server}/api/orders/${this.props.orderId}`)
+      axios.get(`http://localhost:8000/process/API_link/order_list.php?from_id=ZFO0911&to_id=ZFO0914`)
       .then((response) => {
         this.setState({
             name: response.data.name,
@@ -43,7 +44,8 @@ class Order extends Component {
             referrals: response.data.referrals,
             referralDiscount: response.data.referrals,
             discount: response.data.discount,
-            totalAmount: response.data.totalAmount
+            totalAmount: response.data.totalAmount,
+            date: '21/12/2017'
            
         });
       })
@@ -129,7 +131,8 @@ class Order extends Component {
                                 Customer Name : {this.state.name}<br/>
                                 Phone Number : {this.state.phoneNumber}<br/>
                                 Address : {this.state.address}<br/> 
-                                Landmark : {this.state.landMark}
+                                Landmark : {this.state.landMark}<br/> 
+                                Order Date: {this.state.date}
                             </td>
                         </tr>
                     </table>
@@ -154,13 +157,13 @@ class Order extends Component {
                     ₹{this.state.subTotal}
                 </td>
             </tr>
-            <tr className='total'>
+            {/* <tr className='total'>
                 <td></td>  
                 <td>GST:</td>  
                 <td>
                     ₹0.00
                 </td>
-            </tr>
+            </tr> */}
             {/* <tr className='total'>
                 <td></td>
                 <td>Referral Discount {this.state.referrals} X ₹10:<br/>
@@ -189,10 +192,10 @@ class Order extends Component {
 
             <tr className='headinformationing'>
                 <td>
-                    <strong>For Questions :</strong> Call/WhatsApp - 6303221332<br/>
+                    {/* <strong>For Questions :</strong> Call/WhatsApp - 6303221332<br/> */}
                     <strong>Please write a review on facebook:</strong><br/>
                     https://www.facebook.com/zoomfresh.in <br/>
-                    Thank you for your order !!! Stay Safe!!!
+                    {/* Thank you for your order !!! Stay Safe!!! */}
                 </td>
             </tr>
         </table>

@@ -2,8 +2,27 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+var mysql = require('mysql')
 
 const config = require('./config/db');
+
+var connection = mysql.createConnection({
+  host: 'sql180.main-hosting.eu',
+  user: 'u206982382_zoomfresh',
+  password: 'proPRO@123!',
+  database: 'u206982382_zoomfresh'
+})
+
+connection.connect()
+
+connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
+  if (err) throw err
+
+  console.log('The solution is: ', rows)
+})
+
+connection.end()
+
 
 // Use Node's default promise instead of Mongoose's promise library
 mongoose.Promise = global.Promise;
@@ -50,6 +69,7 @@ app.use(bodyParser.json());
 // Initialize routes middleware
 app.use('/api/items', require('./routes/items'));
 app.use('/api/orders', require('./routes/orders'));
+app.use('/api/tq', require('./routes/totalQuantity'));
 
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {

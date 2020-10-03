@@ -9,6 +9,7 @@ import {
 
 import Orders from '../Orders/Orders';  
 import UpdateRates from '../UpdateRates/UpdateRates';  
+import TotalQuantity from '../Quantity/Quantity'; 
 
 import logo from '../../logo.jpeg';
 import './App.css';
@@ -43,6 +44,9 @@ class App extends Component {
                 <li>
                   <Link to="/rates">View/Update Rates</Link>
                 </li>
+                <li>
+                  <Link to="/quantity">Total Quantity/Item</Link>
+                </li>
               </ul>
             </nav>
             <Switch>
@@ -51,6 +55,9 @@ class App extends Component {
               </Route>
               <Route path="/rates">
                 <UpdateRates />
+              </Route>
+              <Route path="/quantity">
+                <TotalQuantity />
               </Route>
             </Switch>
           </div>
