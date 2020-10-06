@@ -4,7 +4,7 @@ var request = require('request');
 const item = require('../models/item');
 router.get('/', function(req, res, next) {
   request({
-    uri: 'https://zoomfresh.in/zoomfresh/process/API_link/order_list.php?order_id=ZFO0176',
+    uri: 'https://zf-api.herokuapp.com/process/API_link/order_list.php?from_id=ZFO0886&to_id=ZFO0932',
   },
   function (error, response, body) {
     var orders = JSON.parse(body);
@@ -331,7 +331,7 @@ router.get('/', function(req, res, next) {
     orders.forEach(function(value , i){
       // && value.payment_mode === 'online'
       var onlineTotal = 0;
-      if(i<=65 && value.status === 'Confirmed'){
+      if(value.status === 'Confirmed'){
         console.log(value.order_id);
         // if(value.payment_mode === 'online') {
           
@@ -381,51 +381,54 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-var request = require('request');
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const csvWriter = createCsvWriter({
-    path: 'cash.csv',
-    header: [
-        {id: 'S L No', title: 'S L No'},
-        {id: 'Customer Name', title: 'Customer Name'},
-        {id: 'Mobile No', title: 'Mobile No'},
-        {id: 'Customer Address', title: 'Customer Address'},
-        {id: 'Amount', title: 'Amount'},
-        {id: 'Payment Mode', title: 'Payment Mode'},
-        {id: 'Note', title: 'Note'}
-    ]
-});
-router.get('/', function(req, res, next) {
-  request({
-    uri: 'https://zoomfresh.in/zoomfresh/process/API_link/order_list.php?order_id=ZFO0176',
-  },
-  function (error, response, body) {
-    const records = [];
-    var orders = JSON.parse(body);
-    var slNumber = 0;
-    orders.forEach(function(value , i){
-      if(i<=65 && value.status === 'Confirmed' && value.payment_mode === 'cash' ){
-        var amount = 0;
-        slNumber = slNumber+1;
-        value.service_name.forEach(function(item){
-          amount = amount+item.product_price;
-        });
-        records.push({
-          'S L No':slNumber,
-          'Customer Name': value.cust_name,
-          'Mobile No': value.cust_mobile_no,
-          'Customer Address': value.cust_servicing_address,
-          'Amount': amount,
-          'Payment Mode': value.payment_mode,
-          'Note': ''      
-        });
-      }
-    });
-    csvWriter.writeRecords(records)       // returns a promise
-          .then(() => {
-                console.log('...Done');
-        });
-  }).pipe(res);
-});
+// const express = require('express');
+// const router = express.Router();
 
-module.exports = router;
+// var request = require('request');
+// const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+// const csvWriter = createCsvWriter({
+//     path: 'oct_4th_orders.csv',
+//     header: [
+//         {id: 'S L No', title: 'S L No'},
+//         {id: 'Customer Name', title: 'Customer Name'},
+//         {id: 'Mobile No', title: 'Mobile No'},
+//         {id: 'Customer Address', title: 'Customer Address'},
+//         {id: 'Amount', title: 'Amount'},
+//         {id: 'Payment Mode', title: 'Payment Mode'},
+//         {id: 'Note', title: 'Note'}
+//     ]
+// });
+// router.get('/', function(req, res, next) {
+//   request({
+//     uri: 'https://zf-api.herokuapp.com/process/API_link/order_list.php?from_id=ZFO0886&to_id=ZFO0932',
+//   },
+//   function (error, response, body) {
+//     const records = [];
+//     var orders = JSON.parse(body);
+//     var slNumber = 0;
+//     orders.forEach(function(value , i){
+//       if(value.status === 'Confirmed'){
+//         var amount = 0;
+//         slNumber = slNumber+1;
+//         value.service_name.forEach(function(item){
+//           amount = amount+item.product_price;
+//         });
+//         records.push({
+//           'S L No':slNumber,
+//           'Customer Name': value.cust_name,
+//           'Mobile No': value.cust_mobile_no,
+//           'Customer Address': value.cust_servicing_address,
+//           'Amount': amount,
+//           'Payment Mode': value.payment_mode,
+//           'Note': ''      
+//         });
+//       }
+//     });
+//     csvWriter.writeRecords(records)       // returns a promise
+//           .then(() => {
+//                 console.log('...Done');
+//         });
+//   }).pipe(res);
+// });
+
+// module.exports = router;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Form } from 'semantic-ui-react';
+import { Table, Button, Form, Loader , Dimmer} from 'semantic-ui-react';
 import axios from 'axios';
 
 class Quantity extends Component {
@@ -7,15 +7,25 @@ class Quantity extends Component {
         super(props);
         
         this.state = {
-           products : []
+           products : [],
+           orderFrom: '',
+           orderTo: '',
+           items: [],
+           totalOrders : 0,
+           onlineOrders : 0,
+           cashOrders : 0,
+           loading: false
         }
-      }
-    
-    componentWillMount() {
-        axios.get(`https://zf-api.herokuapp.com/process/API_link/order_list.php?from_id=ZFO0886&to_id=ZFO0932`)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInputChange= this.handleInputChange.bind(this);
+    }
+    handleSubmit () {
+        this.setState({ 
+            loading: true
+        });
+        axios.get(`https://zf-api.herokuapp.com/process/API_link/order_list.php?from_id=${this.state.orderFrom}&to_id=${this.state.orderTo}`)
         .then((response) => {
             var orders = response.data;
-
             var products = [
             {
                 "productName": "Tomato-Local",
@@ -357,37 +367,98 @@ class Quantity extends Component {
             products.forEach(function(product){ 
             console.log(product.productName+ ' : '+product.totalQty+ ' '+product.unit);
             });
-            this.setState({ products: products.sort(function(a, b){return b.totalQty - a.totalQty})});
+            let items = products;
+            items = products.map((item) => 
+            <Table.Row key={item.productName}>
+                <Table.Cell>{item.productName}</Table.Cell>
+                <Table.Cell>{item.totalQty} {item.unit}</Table.Cell>
+            </Table.Row>
+            );
+            this.setState({ 
+                items: items,
+                totalOrders: orders.length,
+                loading: false
+            });
         })
         .catch((err) => {
         console.log(err);
         });
     }
+    handleInputChange(e) {
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({ [name]: value });
+      }
+    componentWillMount() {}
 
   render() {
-    let items = this.state.products;
-    items = items.map((item) => 
-      <Table.Row key={item.productName}>
-        <Table.Cell>{item.productName}</Table.Cell>
-        <Table.Cell>{item.totalQty} {item.unit}</Table.Cell>
-      </Table.Row>
-    );
     return (
-       
-      <Table singleLine>
-           <Form>
-            
-            </Form>
+       <div>
+        <Form onSubmit={this.handleSubmit}>
+            <Form.Input
+            label='Order Id (From)'
+            type='text'
+            name='orderFrom'
+            maxLength='10'
+            required
+            value={this.state.orderFrom}
+            onChange={this.handleInputChange}
+            />
+            <Form.Input
+            label='Order Id (To)'
+            type='text'
+            name='orderTo'
+            maxLength='10'
+            required
+            value={this.state.orderTo}
+            onChange={this.handleInputChange}
+            />
+            <Button color='blue' floated='right'>Submit</Button>
+        <br /><br />
+        </Form>
+      <div>
+          Total Orders : {this.state.totalOrders}
+      </div>
+      <Table>
         <Table.Header>
+        <Table.Row>
+            <Form onSubmit={this.handleSubmit}>
+                <Form.Input
+                label='Order Id (From)'
+                type='text'
+                name='orderFrom'
+                maxLength='40'
+                required
+                value={this.state.orderFrom}
+                onChange={this.handleInputChange}
+                />
+                <Form.Input
+                label='Order Id (To)'
+                type='text'
+                name='orderTo'
+                maxLength='40'
+                required
+                value={this.state.orderTo}
+                onChange={this.handleInputChange}
+                />
+                <Button color={this.props.buttonColor} floated='right'>Submit</Button>
+            <br /><br />
+            </Form>
+          </Table.Row>
           <Table.Row>
             <Table.HeaderCell>Item Name</Table.HeaderCell>
             <Table.HeaderCell>Total Quantity</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {items}
+        {this.state.loading &&  
+        <Loader active inline='centered' />}
+        {this.state.items}
         </Table.Body>
       </Table>
+      </div>
     );
   }
 }
