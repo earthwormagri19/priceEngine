@@ -346,7 +346,6 @@ class Quantity extends Component {
             var confirmedOrders = 0;
             orders.forEach(function(value){
             if(value.status === 'Confirmed'){
-                console.log(value.order_id);
                 confirmedOrders++
                 var items = value.service_name;
                 products.forEach(function(product){
@@ -362,7 +361,6 @@ class Quantity extends Component {
             }
             });
             products.sort(function(a, b){return b.totalQty - a.totalQty});
-            console.log('--------------------------------\nTotal Oders:' + confirmedOrders+'\n--------------------------------');
             console.log('***Procurement List***');
             products.forEach(function(product){ 
             console.log(product.productName+ ' : '+product.totalQty+ ' '+product.unit);
@@ -376,7 +374,7 @@ class Quantity extends Component {
             );
             this.setState({ 
                 items: items,
-                totalOrders: orders.length,
+                totalOrders: confirmedOrders,
                 loading: false
             });
         })
