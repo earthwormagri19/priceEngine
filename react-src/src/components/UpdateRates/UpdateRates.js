@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TableItem from '../TableItem/TableItem';
 import ModalItem from '../ModalItem/ModalItem'
-import { Container } from 'semantic-ui-react';
+//import { Container } from 'semantic-ui-react';
 import axios from 'axios';
 
 
@@ -66,7 +66,7 @@ class UpdateRates extends Component {
 
   render() {
     return (
-    <Container>
+    <div>
         <ModalItem
           headerTitle='Add item'
           buttonTriggerTitle='Add item'
@@ -81,7 +81,7 @@ class UpdateRates extends Component {
           items={this.state.items}
           server={this.server}
         />
-    </Container>
+    </div>
     );
   }
 }

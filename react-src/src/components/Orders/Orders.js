@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import OrdersTable from '../Orders/OrdersTable';
-import { Container } from 'semantic-ui-react';
+//import { Container } from 'semantic-ui-react';
 import axios from 'axios';
 
 
@@ -100,14 +100,14 @@ class Orders extends Component {
 
   render() {
     return (
-      <Container>
+      <div className="body-container">
          <input type="file" class="ui green button"  name="file" onChange={this.selectOrders}/>
          <button type="button" class="ui green button" onClick={this.uploadOrders}>Upload</button> 
          <OrdersTable
             orders={this.state.orders}
             server={this.server}
           />
-      </Container>
+      </div>
     );
   }
 }

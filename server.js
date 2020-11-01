@@ -70,6 +70,8 @@ app.use(bodyParser.json());
 app.use('/api/items', require('./routes/items'));
 app.use('/api/orders', require('./routes/orders'));
 app.use('/api/tq', require('./routes/totalQuantity'));
+app.use('/api/payments', require('./routes/payments'));
+// app.use('/api/auth', require('./routes/auth'));
 
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {

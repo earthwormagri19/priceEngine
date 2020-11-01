@@ -57,27 +57,6 @@ class Order extends Component {
 
     downLoadInvoice() {
     } 
-    // fun(subTotal) {
-    //     var totalAmount = 0;
-    //     var referralDiscount = 0;
-    //     var promotionalDiscount = 0;
-    //     if(this.state.referrals && this.state.referrals >0) {
-    //         referralDiscount = Number(this.state.referrals) * 10;
-    //         totalAmount = subTotal - referralDiscount;
-    //     }
-    //     else {
-    //         totalAmount = subTotal;
-    //     }
-    //     if(this.state.discount) {
-    //         promotionalDiscount = (subTotal * this.state.discount) /100;
-    //         totalAmount = totalAmount -  promotionalDiscount;
-    //     }
-    //     return {
-    //         referralDiscount: referralDiscount,
-    //         totalAmount: totalAmount,
-    //         promotionalDiscount: promotionalDiscount
-    //     }
-    // }  
   render() {
     let items = this.state.items;
     var subTotal = 0;

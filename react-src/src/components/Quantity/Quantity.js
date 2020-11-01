@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Button, Form, Loader , Dimmer} from 'semantic-ui-react';
 import axios from 'axios';
+import { CSVLink, CSVDownload } from 'react-csv';
 
 class Quantity extends Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class Quantity extends Component {
         
         this.state = {
            products : [],
+           productList: [],
            orderFrom: '',
            orderTo: '',
            items: [],
@@ -353,18 +355,14 @@ class Quantity extends Component {
                     if(item.product_name === product.productName) {
                     product.qty = product.qty + item.product_quantity;
                     product.packingList.push(item.product_quantity*product.baseQty + ' '+ product.unit);
-                    product.OrderList.push(value.cust_name + ' ('+value.order_id+ ')'+ ' : '+ item.product_quantity*product.baseQty + ' '+ product.unit);
                     product.totalQty = product.qty * product.baseQty;
                     }
                 });
                 });
             }
             });
+            // product.OrderList.push(value.cust_name + ' ('+value.order_id+ ')'+ ' : '+ item.product_quantity*product.baseQty + ' '+ product.unit);
             products.sort(function(a, b){return b.totalQty - a.totalQty});
-            console.log('***Procurement List***');
-            products.forEach(function(product){ 
-            console.log(product.productName+ ' : '+product.totalQty+ ' '+product.unit);
-            });
             let items = products;
             items = products.map((item) => 
             <Table.Row key={item.productName}>
@@ -375,7 +373,8 @@ class Quantity extends Component {
             this.setState({ 
                 items: items,
                 totalOrders: confirmedOrders,
-                loading: false
+                loading: false,
+                products: products
             });
         })
         .catch((err) => {
@@ -393,8 +392,8 @@ class Quantity extends Component {
 
   render() {
     return (
-       <div>
-        <Form onSubmit={this.handleSubmit}>
+       <div className="body-container">
+        <Form onSubmit={this.handleSubmit} className="form-input">
             <Form.Input
             label='Order Id (From)'
             type='text'
@@ -413,9 +412,11 @@ class Quantity extends Component {
             value={this.state.orderTo}
             onChange={this.handleInputChange}
             />
-            <Button color='blue' floated='right'>Submit</Button>
+             <Button color='blue'>Submit</Button>
+           
         <br /><br />
         </Form>
+        <CSVLink data={this.state.products}>Download Products list</CSVLink>
       <div>
           Total Orders : {this.state.totalOrders}
       </div>
@@ -441,7 +442,7 @@ class Quantity extends Component {
                 value={this.state.orderTo}
                 onChange={this.handleInputChange}
                 />
-                <Button color={this.props.buttonColor} floated='right'>Submit</Button>
+                <Button color={this.props.buttonColor} >Submit</Button>
             <br /><br />
             </Form>
           </Table.Row>

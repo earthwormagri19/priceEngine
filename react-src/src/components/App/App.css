@@ -1,11 +1,17 @@
+.ui.container {
+  width: 100% !important;
+}
+
 .App-header {
-  background-color: #222;
+  background-color:#A0522D;
   color: #fff;
   margin-bottom: 25px;
   padding: 25px 25px 30px;
   text-align: center;
 }
-
+.App{
+  width: 100% !important;
+}
 .App-logo {
   height: 100px;
 }
@@ -47,4 +53,43 @@ a.shirts {
 
 .shirts img {
   height: 40px;
+}
+.Nav-bar{
+  display: flex;
+  list-style: none;
+  padding: 8px;
+  margin-top: -25px;
+  font-weight: 600;
+  font-size: 16px;
+}
+.Nav-header{
+  background-color: #00FFFF;
+  height: 38px;
+}
+.Nav-bar li {
+  margin-right: 50px;
+}
+/* li:hover{
+  background-color: white;
+  height: 38px;
+} */
+.login-container{
+  width: 40%;
+    border: 2px solid #00FFFF;
+    padding: 50px;
+    margin: 20px;
+    margin-left: 31%;
+}
+.errorMessage {
+  color: red;
+  font-weight: 600;
+  font-size: 16px;
+}
+.body-container{
+  width: 90%;
+  margin: auto;
+  margin-top: 40px;
+}
+.form-input{
+  width: 40% !important;
 }
