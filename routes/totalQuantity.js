@@ -387,20 +387,18 @@ const router = express.Router();
 var request = require('request');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const csvWriter = createCsvWriter({
-    path: 'oct_28_orders_new.csv',
+    path: 'dec2st_orders.csv',
     header: [
-        {id: 'S L No', title: 'S L No'},
         {id: 'Customer Name', title: 'Customer Name'},
         {id: 'Mobile No', title: 'Mobile No'},
         {id: 'Customer Address', title: 'Customer Address'},
         {id: 'Amount', title: 'Amount'},
-        {id: 'Payment Mode', title: 'Payment Mode'},
-        {id: 'Note', title: 'Note'}
+        {id: 'Payment', title: 'Payment'},
     ]
 });
 router.get('/', function(req, res, next) {
   request({
-    uri: 'https://zf-api.herokuapp.com/process/API_link/order_list.php?from_id=ZFO1032&to_id=ZFO1038',
+    uri: 'https://zf-api.herokuapp.com/process/API_link/order_list.php?from_id=ZFO1187&to_id=ZFO1196',
   },
   function (error, response, body) {
     const records = [];
@@ -414,13 +412,11 @@ router.get('/', function(req, res, next) {
           amount = amount+item.product_price;
         });
         records.push({
-          'S L No':slNumber,
           'Customer Name': value.cust_name,
           'Mobile No': value.cust_mobile_no,
           'Customer Address': value.cust_servicing_address,
           'Amount': amount,
-          'Payment Mode': value.payment_mode,
-          'Note': ''      
+          'Payment': value.payment_mode    
         });
       }
     });
@@ -440,7 +436,7 @@ module.exports = router;
 // var request = require('request');
 // const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 // const csvWriter = createCsvWriter({
-//     path: 'users_oct_21h.csv',
+//     path: 'users_nov24.csv',
 //     header: [
 //         {id: 'Customer Name', title: 'Customer Name'},
 //         {id: 'Customer Address', title: 'Customer Address'},
@@ -459,6 +455,38 @@ module.exports = router;
 //         'Customer Name': value.name,
 //         'Mobile No': value.mobile_no,
 //         'Customer Address': value.serving_address,   
+//       });
+//     });
+//     csvWriter.writeRecords(records)       // returns a promise
+//           .then(() => {
+//                 console.log('...Done');
+//         });
+//   }).pipe(res);
+// });
+
+// module.exports = router;
+
+// const express = require('express');
+// const router = express.Router();
+
+// var request = require('request');
+// const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+// const csvWriter = createCsvWriter({
+//     path: 'products.csv',
+//     header: [
+//         {id: 'Product name', title: 'Product name'},
+//     ]
+// });
+// router.get('/', function(req, res, next) {
+//   request({
+//     uri: 'https://zf-api.herokuapp.com/process/API_link/product.php',
+//   },
+//   function (error, response, body) {
+//     const records = [];
+//     var orders = JSON.parse(body);
+//     orders.forEach(function(value , i){
+//       records.push({
+//         'Product name': value.name
 //       });
 //     });
 //     csvWriter.writeRecords(records)       // returns a promise

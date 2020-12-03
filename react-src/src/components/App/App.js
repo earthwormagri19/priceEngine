@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 //import { Container } from 'semantic-ui-react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  Redirect
 } from "react-router-dom";
 
 import Login from '../Login';
@@ -13,13 +12,15 @@ import Orders from '../Orders/Orders';
 import UpdateRates from '../UpdateRates/UpdateRates';  
 import TotalQuantity from '../Quantity/Quantity'; 
 import Payments from '../Payments/Payments'; 
-
 import logo from '../../logo.jpeg';
 import './App.css';
 
 import firebase from 'firebase'
 import 'firebase/auth'
 import 'firebase/app'
+
+// const Payments = React.lazy(() => import('../Payments/Payments'));
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyBO-lR44grlyS7cfSOHinVG25FSy2-MKlw",

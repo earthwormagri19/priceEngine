@@ -210,6 +210,15 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
+                "productName": "Palak",
+                "qty": 0,
+                "baseQty": 1,
+                "totalQty": 0,
+                "unit": "Bunch",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
                 "productName": "Red onion ",
                 "qty": 0,
                 "baseQty": 1,
@@ -283,6 +292,15 @@ class Quantity extends Component {
             },
             {
                 "productName": "Pedda Chikkudu",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Green Beans",
                 "qty": 0,
                 "baseQty": 0.5,
                 "totalQty": 0,
