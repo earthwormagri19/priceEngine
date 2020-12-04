@@ -114,14 +114,14 @@ class App extends Component {
           <div className="Nav-header">
             <nav>
               <ul className='Nav-bar'>
-                <li>
+                {/* <li>
                   <Link to="/orders">Orders</Link>
-                </li>
+                </li> */}
                 {/* <li>
                   <Link to="/rates">View/Update Rates</Link>
                 </li> */}
                 <li>
-                  <Link to="/quantity">Total Quantity/Item</Link>
+                  <Link to="/quantity">Total Quantity/Delivery list</Link>
                 </li>
                 <li>
                   <Link to="/payments">Payments</Link>

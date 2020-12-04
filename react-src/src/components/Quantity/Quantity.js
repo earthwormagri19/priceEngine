@@ -16,7 +16,9 @@ class Quantity extends Component {
            totalOrders : 0,
            onlineOrders : 0,
            cashOrders : 0,
-           loading: false
+           loading: false,
+           records: [],
+           transList: []
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange= this.handleInputChange.bind(this);
@@ -364,18 +366,37 @@ class Quantity extends Component {
             } 
             ];
             var confirmedOrders = 0;
+            const records = [];
+            const transList = [];
+            var slNumber = 0;
             orders.forEach(function(value){
             if(value.status === 'Confirmed'){
                 confirmedOrders++
                 var items = value.service_name;
-                products.forEach(function(product){
-                items.forEach(function(item){
-                    if(item.product_name === product.productName) {
-                    product.qty = product.qty + item.product_quantity;
-                    product.packingList.push(item.product_quantity*product.baseQty + ' '+ product.unit);
-                    product.totalQty = product.qty * product.baseQty;
-                    }
+                var amount = 0;
+                slNumber = slNumber+1;
+                value.service_name.forEach(function(item){
+                  amount = amount+item.product_price;
                 });
+                products.forEach(function(product){
+                    items.forEach(function(item){
+                        if(item.product_name === product.productName) {
+                            product.qty = product.qty + item.product_quantity;
+                            product.packingList.push(item.product_quantity*product.baseQty + ' '+ product.unit);
+                            product.totalQty = product.qty * product.baseQty;
+                        }
+                    });
+                    transList.push({
+                        'Product Name': product.productName,
+                        'Total Quantiy': product.totalQty + ' ' + product.unit
+                    });
+                });
+                records.push({
+                  'Customer Name': value.cust_name,
+                  'Mobile No': value.cust_mobile_no,
+                  'Customer Address': value.cust_servicing_address,
+                  'Amount': amount,
+                  'Payment': value.payment_mode    
                 });
             }
             });
@@ -392,7 +413,9 @@ class Quantity extends Component {
                 items: items,
                 totalOrders: confirmedOrders,
                 loading: false,
-                products: products
+                products: products,
+                records: records,
+                transList: transList
             });
         })
         .catch((err) => {
@@ -434,7 +457,22 @@ class Quantity extends Component {
            
         <br /><br />
         </Form>
-        <CSVLink data={this.state.products}>Download Products list</CSVLink>
+        <CSVLink 
+            filename={"procurement_list.csv"}
+            className="ui  button"
+            target="_blank"
+            data={this.state.transList}
+        >
+            Download Procurement list
+        </CSVLink>
+        <CSVLink 
+            filename={"delivery_list.csv"}
+            className="ui  button"
+            target="_blank" 
+            data={this.state.records}
+        >
+            Download Delivery list
+         </CSVLink>
       <div>
           Total Orders : {this.state.totalOrders}
       </div>
