@@ -367,41 +367,43 @@ class Quantity extends Component {
             ];
             var confirmedOrders = 0;
             const records = [];
-            const transList = [];
-            var slNumber = 0;
             orders.forEach(function(value){
-            if(value.status === 'Confirmed'){
-                confirmedOrders++
-                var items = value.service_name;
-                var amount = 0;
-                slNumber = slNumber+1;
-                value.service_name.forEach(function(item){
-                  amount = amount+item.product_price;
-                });
-                products.forEach(function(product){
-                    items.forEach(function(item){
-                        if(item.product_name === product.productName) {
-                            product.qty = product.qty + item.product_quantity;
-                            product.packingList.push(item.product_quantity*product.baseQty + ' '+ product.unit);
-                            product.totalQty = product.qty * product.baseQty;
-                        }
+                if(value.status === 'Confirmed'){
+                    confirmedOrders++
+                    var items = value.service_name;
+                    var amount = 0;
+                    value.service_name.forEach(function(item){
+                    amount = amount+item.product_price;
                     });
-                    transList.push({
-                        'Product Name': product.productName,
-                        'Total Quantiy': product.totalQty + ' ' + product.unit
+                    products.forEach(function(product){
+                        items.forEach(function(item){
+                            if(item.product_name === product.productName) {
+                                product.qty = product.qty + item.product_quantity;
+                                product.packingList.push(item.product_quantity*product.baseQty + ' '+ product.unit);
+                                product.totalQty = product.qty * product.baseQty;
+                            }
+                        });
                     });
+                    records.push({
+                    'Customer Name': value.cust_name,
+                    'Mobile No': value.cust_mobile_no,
+                    'Customer Address': value.cust_servicing_address,
+                    'Amount': amount,
+                    'Payment': value.payment_mode    
+                    });
+                }
+            });
+            const transList = [];
+            products.forEach(function(product){
+                transList.push({
+                    'Product Name': product.productName,
+                    'Total Quantity': product.totalQty,
+                    'Unit': product.unit
                 });
-                records.push({
-                  'Customer Name': value.cust_name,
-                  'Mobile No': value.cust_mobile_no,
-                  'Customer Address': value.cust_servicing_address,
-                  'Amount': amount,
-                  'Payment': value.payment_mode    
-                });
-            }
             });
             // product.OrderList.push(value.cust_name + ' ('+value.order_id+ ')'+ ' : '+ item.product_quantity*product.baseQty + ' '+ product.unit);
             products.sort(function(a, b){return b.totalQty - a.totalQty});
+            transList.sort(function(a, b){return b['Total Quantity'] - a['Total Quantity']});
             let items = products;
             items = products.map((item) => 
             <Table.Row key={item.productName}>
