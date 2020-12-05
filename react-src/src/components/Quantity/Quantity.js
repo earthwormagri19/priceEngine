@@ -275,11 +275,11 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
-                "productName": "Corn ",
+                "productName": "Corn",
                 "qty": 0,
-                "baseQty": 3,
+                "baseQty": 0.5,
                 "totalQty": 0,
-                "unit": "Pc",
+                "unit": "Dozen",
                 "packingList": [],
                 "OrderList": []
             },
@@ -363,7 +363,34 @@ class Quantity extends Component {
                 "unit": "Pc",
                 "packingList": [],
                 "OrderList": []
-            } 
+            },
+            {
+                "productName": "Pachi Pallikaya / Groundnut",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Jamakaya / Guava",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Ulli Kadalu / Spring Onion",
+                "qty": 0,
+                "baseQty": 1,
+                "totalQty": 0,
+                "unit": "Bunch",
+                "packingList": [],
+                "OrderList": []
+            }
             ];
             var confirmedOrders = 0;
             const records = [];
