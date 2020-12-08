@@ -410,6 +410,15 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
+                "productName": "Grapes",
+                "qty": 0,
+                "baseQty": 0.25,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
                 "productName": "Ankapur Desi Chicken (Cooked)",
                 "qty": 0,
                 "baseQty": 1,
