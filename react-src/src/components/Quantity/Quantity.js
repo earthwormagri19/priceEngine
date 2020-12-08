@@ -43,7 +43,7 @@ class Quantity extends Component {
             {
                 "productName": "Brinjal",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -52,7 +52,7 @@ class Quantity extends Component {
             {
                 "productName": "Ladies finger ",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -79,7 +79,7 @@ class Quantity extends Component {
             {
                 "productName": "Onions - White",
                 "qty": 0,
-                "baseQty": 1,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -196,7 +196,7 @@ class Quantity extends Component {
             {
                 "productName": "Beerakaya",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -223,7 +223,7 @@ class Quantity extends Component {
             {
                 "productName": "Red onion ",
                 "qty": 0,
-                "baseQty": 1,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -250,7 +250,7 @@ class Quantity extends Component {
             {
                 "productName": "Carrot",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -286,7 +286,7 @@ class Quantity extends Component {
             {
                 "productName": "Kakarakaya",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -295,7 +295,7 @@ class Quantity extends Component {
             {
                 "productName": "Pedda Chikkudu",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -304,7 +304,7 @@ class Quantity extends Component {
             {
                 "productName": "Green Beans",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -316,6 +316,15 @@ class Quantity extends Component {
                 "baseQty": 1,
                 "totalQty": 0,
                 "unit": "Pc",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Green Brinjal",
+                "qty": 0,
+                "baseQty": 0.25,
+                "totalQty": 0,
+                "unit": "Kg",
                 "packingList": [],
                 "OrderList": []
             },
@@ -347,20 +356,11 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
-                "productName": "Papaya",
+                "productName": "Ulli Kadalu / Spring Onion",
                 "qty": 0,
                 "baseQty": 1,
                 "totalQty": 0,
-                "unit": "Pc",
-                "packingList": [],
-                "OrderList": []
-            },
-            {
-                "productName": "Ankapur Desi Chicken (Cooked)",
-                "qty": 0,
-                "baseQty": 1,
-                "totalQty": 0,
-                "unit": "Pc",
+                "unit": "Bunch",
                 "packingList": [],
                 "OrderList": []
             },
@@ -374,6 +374,15 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
+                "productName": "Papaya",
+                "qty": 0,
+                "baseQty": 1,
+                "totalQty": 0,
+                "unit": "Pc",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
                 "productName": "Jamakaya / Guava",
                 "qty": 0,
                 "baseQty": 0.5,
@@ -383,11 +392,29 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
-                "productName": "Ulli Kadalu / Spring Onion",
+                "productName": "Apple Ber / Gangaregu",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Apple",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Ankapur Desi Chicken (Cooked)",
                 "qty": 0,
                 "baseQty": 1,
                 "totalQty": 0,
-                "unit": "Bunch",
+                "unit": "Pc",
                 "packingList": [],
                 "OrderList": []
             }
