@@ -203,7 +203,7 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
-                "productName": "Methi",
+                "productName": "Menthi",
                 "qty": 0,
                 "baseQty": 2,
                 "totalQty": 0,
