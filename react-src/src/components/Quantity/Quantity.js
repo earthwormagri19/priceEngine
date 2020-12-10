@@ -77,7 +77,7 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
-                "productName": "Onions - White",
+                "productName": "White Onion",
                 "qty": 0,
                 "baseQty": 0.5,
                 "totalQty": 0,
@@ -194,7 +194,7 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
-                "productName": "Beerakaya",
+                "productName": "Beerakaya / Ridge gourd",
                 "qty": 0,
                 "baseQty": 0.25,
                 "totalQty": 0,
@@ -475,13 +475,34 @@ class Quantity extends Component {
                 }
             });
             const transList = [];
+            const packingList = [];
             products.forEach(function(product){
                 transList.push({
                     'Product Name': product.productName,
                     'Total Quantity': product.totalQty,
                     'Unit': product.unit
                 });
+                var arr = {};
+                // eslint-disable-next-line array-callback-return
+                product.packingList.map(x=>{              
+                    arr[x]=0; 
+                    arr[x]++;
+                });
+                var pkList ='';
+                for(var p in arr) {
+                    
+                    if (arr.hasOwnProperty(p)) {
+                        var str = arr[p] +' X '+ p ;
+                        pkList = pkList.concat('\n'+str);
+                    }
+                }
+                packingList.push({
+                    'Product Name' : product.productName,
+                    'List': pkList
+
+                });
             });
+
             // product.OrderList.push(value.cust_name + ' ('+value.order_id+ ')'+ ' : '+ item.product_quantity*product.baseQty + ' '+ product.unit);
             products.sort(function(a, b){return b.totalQty - a.totalQty});
             transList.sort(function(a, b){return b['Total Quantity'] - a['Total Quantity']});
@@ -498,7 +519,8 @@ class Quantity extends Component {
                 loading: false,
                 products: products,
                 records: records,
-                transList: transList
+                transList: transList,
+                packingList: packingList
             });
         })
         .catch((err) => {
@@ -556,6 +578,14 @@ class Quantity extends Component {
         >
             Download Delivery list
          </CSVLink>
+         {/* <CSVLink 
+            filename={"packing_list.csv"}
+            className="ui  button"
+            target="_blank" 
+            data={this.state.packingList}
+        >
+            Packing list
+         </CSVLink> */}
       <div>
           Total Orders : {this.state.totalOrders}
       </div>

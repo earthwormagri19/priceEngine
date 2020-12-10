@@ -381,81 +381,44 @@
 
 // module.exports = router;
 
-const express = require('express');
-const router = express.Router();
-
-var request = require('request');
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const csvWriter = createCsvWriter({
-    path: 'dec4st_orders.csv',
-    header: [
-        {id: 'Customer Name', title: 'Customer Name'},
-        {id: 'Mobile No', title: 'Mobile No'},
-        {id: 'Customer Address', title: 'Customer Address'},
-        {id: 'Amount', title: 'Amount'},
-        {id: 'Payment', title: 'Payment'},
-    ]
-});
-router.get('/', function(req, res, next) {
-  request({
-    uri: 'https://zf-api.herokuapp.com/process/API_link/order_list.php?from_id=ZFO1197&to_id=ZFO1204',
-  },
-  function (error, response, body) {
-    const records = [];
-    var orders = JSON.parse(body);
-    var slNumber = 0;
-    orders.forEach(function(value , i){
-      if(value.status === 'Confirmed'){
-        var amount = 0;
-        slNumber = slNumber+1;
-        value.service_name.forEach(function(item){
-          amount = amount+item.product_price;
-        });
-        records.push({
-          'Customer Name': value.cust_name,
-          'Mobile No': value.cust_mobile_no,
-          'Customer Address': value.cust_servicing_address,
-          'Amount': amount,
-          'Payment': value.payment_mode    
-        });
-      }
-    });
-    csvWriter.writeRecords(records)       // returns a promise
-          .then(() => {
-                console.log('...Done');
-        });
-  }).pipe(res);
-});
-
-module.exports = router;
-
-
 // const express = require('express');
 // const router = express.Router();
 
 // var request = require('request');
 // const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 // const csvWriter = createCsvWriter({
-//     path: 'users_nov24.csv',
+//     path: 'dec4st_orders.csv',
 //     header: [
 //         {id: 'Customer Name', title: 'Customer Name'},
-//         {id: 'Customer Address', title: 'Customer Address'},
 //         {id: 'Mobile No', title: 'Mobile No'},
+//         {id: 'Customer Address', title: 'Customer Address'},
+//         {id: 'Amount', title: 'Amount'},
+//         {id: 'Payment', title: 'Payment'},
 //     ]
 // });
 // router.get('/', function(req, res, next) {
 //   request({
-//     uri: 'https://zf-api.herokuapp.com/process/API_link/user.php',
+//     uri: 'https://zf-api.herokuapp.com/process/API_link/order_list.php?from_id=ZFO1197&to_id=ZFO1204',
 //   },
 //   function (error, response, body) {
 //     const records = [];
 //     var orders = JSON.parse(body);
+//     var slNumber = 0;
 //     orders.forEach(function(value , i){
-//       records.push({
-//         'Customer Name': value.name,
-//         'Mobile No': value.mobile_no,
-//         'Customer Address': value.serving_address,   
-//       });
+//       if(value.status === 'Confirmed'){
+//         var amount = 0;
+//         slNumber = slNumber+1;
+//         value.service_name.forEach(function(item){
+//           amount = amount+item.product_price;
+//         });
+//         records.push({
+//           'Customer Name': value.cust_name,
+//           'Mobile No': value.cust_mobile_no,
+//           'Customer Address': value.cust_servicing_address,
+//           'Amount': amount,
+//           'Payment': value.payment_mode    
+//         });
+//       }
 //     });
 //     csvWriter.writeRecords(records)       // returns a promise
 //           .then(() => {
@@ -465,6 +428,43 @@ module.exports = router;
 // });
 
 // module.exports = router;
+
+
+const express = require('express');
+const router = express.Router();
+
+var request = require('request');
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const csvWriter = createCsvWriter({
+    path: 'users_dec10.csv',
+    header: [
+        {id: 'Customer Name', title: 'Customer Name'},
+        {id: 'Customer Address', title: 'Customer Address'},
+        {id: 'Mobile No', title: 'Mobile No'},
+    ]
+});
+router.get('/', function(req, res, next) {
+  request({
+    uri: 'https://zf-api.herokuapp.com/process/API_link/user.php',
+  },
+  function (error, response, body) {
+    const records = [];
+    var orders = JSON.parse(body);
+    orders.forEach(function(value , i){
+      records.push({
+        'Customer Name': value.name,
+        'Mobile No': value.mobile_no,
+        'Customer Address': value.serving_address,   
+      });
+    });
+    csvWriter.writeRecords(records)       // returns a promise
+          .then(() => {
+                console.log('...Done');
+        });
+  }).pipe(res);
+});
+
+module.exports = router;
 
 // const express = require('express');
 // const router = express.Router();
