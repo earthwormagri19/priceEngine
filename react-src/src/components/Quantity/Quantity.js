@@ -483,16 +483,11 @@ class Quantity extends Component {
                     'Unit': product.unit
                 });
                 var arr = {};
-                // eslint-disable-next-line array-callback-return
-                product.packingList.map(x=>{              
-                    arr[x]=0; 
-                    arr[x]++;
-                });
+                product.packingList.forEach(function(x) { arr[x] = (arr[x] || 0)+1; });
                 var pkList ='';
-                for(var p in arr) {
-                    
+                for(var p in arr) {  
                     if (arr.hasOwnProperty(p)) {
-                        var str = arr[p] +' X '+ p ;
+                        var str =  p + ' - '+ arr[p] + ' Order(s)';
                         pkList = pkList.concat('\n'+str);
                     }
                 }
@@ -578,14 +573,14 @@ class Quantity extends Component {
         >
             Download Delivery list
          </CSVLink>
-         {/* <CSVLink 
+         <CSVLink 
             filename={"packing_list.csv"}
             className="ui  button"
             target="_blank" 
             data={this.state.packingList}
         >
             Packing list
-         </CSVLink> */}
+         </CSVLink>
       <div>
           Total Orders : {this.state.totalOrders}
       </div>
