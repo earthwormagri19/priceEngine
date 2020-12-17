@@ -430,7 +430,7 @@ class Quantity extends Component {
             {
                 "productName": "Watermelon / Puchakaya",
                 "qty": 0,
-                "baseQty": 1,
+                "baseQty": 2,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -493,8 +493,8 @@ class Quantity extends Component {
                 }
                 packingList.push({
                     'Product Name' : product.productName,
-                    'List': pkList
-
+                    'Total Quantity': product.totalQty + ' ' + product.unit,
+                    'Packing list': pkList
                 });
             });
 
@@ -557,14 +557,14 @@ class Quantity extends Component {
            
         <br /><br />
         </Form>
-        <CSVLink 
+        {/* <CSVLink 
             filename={"procurement_list.csv"}
             className="ui  button"
             target="_blank"
             data={this.state.transList}
         >
             Download Procurement list
-        </CSVLink>
+        </CSVLink> */}
         <CSVLink 
             filename={"delivery_list.csv"}
             className="ui  button"
@@ -574,12 +574,12 @@ class Quantity extends Component {
             Download Delivery list
          </CSVLink>
          <CSVLink 
-            filename={"packing_list.csv"}
+            filename={"procuremt_and_packing_list.csv"}
             className="ui  button"
             target="_blank" 
             data={this.state.packingList}
         >
-            Packing list
+            Download Procurement & Packing list
          </CSVLink>
       <div>
           Total Orders : {this.state.totalOrders}
