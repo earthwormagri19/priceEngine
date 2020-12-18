@@ -557,14 +557,14 @@ class Quantity extends Component {
            
         <br /><br />
         </Form>
-        {/* <CSVLink 
+        <CSVLink 
             filename={"procurement_list.csv"}
             className="ui  button"
             target="_blank"
             data={this.state.transList}
         >
             Download Procurement list
-        </CSVLink> */}
+        </CSVLink>
         <CSVLink 
             filename={"delivery_list.csv"}
             className="ui  button"
