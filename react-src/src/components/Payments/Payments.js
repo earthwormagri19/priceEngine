@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Table, Button, Form, Loader, Label} from 'semantic-ui-react';
+import { Table, Button, Form, Loader, Label, Icon} from 'semantic-ui-react';
 import axios from 'axios';
+import Moment from 'react-moment'
 
 class Quantity extends Component {
     constructor(props) {
@@ -32,6 +33,7 @@ class Quantity extends Component {
                   <Table.Row>
                       <Table.Cell>{item.id}</Table.Cell>
                       <Table.Cell>{item.amount}</Table.Cell>
+                      {/* <Table.Cell><Moment unix tz="Asia/Kolkata">{item.created_at}</Moment></Table.Cell> */}
                       <Table.Cell>{item.description}</Table.Cell>
                       <Table.Cell>{item.method}</Table.Cell>
                       <Table.Cell>
@@ -52,12 +54,15 @@ class Quantity extends Component {
        <div className="body-container">
         <Form onSubmit={this.handleSubmit}>
             <Button color='blue' floated='left'>Refresh</Button>
+            <Icon name='refresh' /> 
         </Form>
+        <br /><br />
       <Table>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Payment Id</Table.HeaderCell>
             <Table.HeaderCell>Amount</Table.HeaderCell>
+            {/* <Table.HeaderCell>Date</Table.HeaderCell> */}
             <Table.HeaderCell>Description</Table.HeaderCell>
             <Table.HeaderCell>Method</Table.HeaderCell>
             <Table.HeaderCell>Status</Table.HeaderCell>

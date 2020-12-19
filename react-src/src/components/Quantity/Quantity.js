@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Table, Button, Form, Loader , Dimmer} from 'semantic-ui-react';
+import { Table, Button, Form, Loader, Icon, Label, Menu} from 'semantic-ui-react';
 import axios from 'axios';
-import { CSVLink, CSVDownload } from 'react-csv';
+import { CSVLink } from 'react-csv';
 
 class Quantity extends Component {
     constructor(props) {
@@ -493,7 +493,8 @@ class Quantity extends Component {
                 }
                 packingList.push({
                     'Product Name' : product.productName,
-                    'Total Quantity': product.totalQty + ' ' + product.unit,
+                    'Total Quantity': product.totalQty,
+                    'Unit': product.unit,
                     'Packing list': pkList
                 });
             });
@@ -501,6 +502,7 @@ class Quantity extends Component {
             // product.OrderList.push(value.cust_name + ' ('+value.order_id+ ')'+ ' : '+ item.product_quantity*product.baseQty + ' '+ product.unit);
             products.sort(function(a, b){return b.totalQty - a.totalQty});
             transList.sort(function(a, b){return b['Total Quantity'] - a['Total Quantity']});
+            packingList.sort(function(a, b){return b['Total Quantity'] - a['Total Quantity']});
             let items = products;
             items = products.map((item) => 
             <Table.Row key={item.productName}>
@@ -557,33 +559,47 @@ class Quantity extends Component {
            
         <br /><br />
         </Form>
+        <div>
+            <Menu compact>
+                <Menu.Item as='a'>
+                <Icon name='shopping basket' />  Total Orders 
+                <Label color='teal' floating>
+                    {this.state.totalOrders}
+                </Label>
+                </Menu.Item>
+            </Menu>
+         </div>
+        {/* <div>
+            Download
+            <Icon name='download'  />
+        </div> */}
+        <br />
+        <div>
         <CSVLink 
             filename={"procurement_list.csv"}
             className="ui  button"
             target="_blank"
             data={this.state.transList}
         >
-            Download Procurement list
+            Procurement list
         </CSVLink>
+        <CSVLink 
+            filename={"procuremt_and_packing_list.csv"}
+            className="ui  button"
+            target="_blank" 
+            data={this.state.packingList}
+        >
+            Procurement & Packing list
+         </CSVLink>
         <CSVLink 
             filename={"delivery_list.csv"}
             className="ui  button"
             target="_blank" 
             data={this.state.records}
         >
-            Download Delivery list
+            Delivery list
          </CSVLink>
-         <CSVLink 
-            filename={"procuremt_and_packing_list.csv"}
-            className="ui  button"
-            target="_blank" 
-            data={this.state.packingList}
-        >
-            Download Procurement & Packing list
-         </CSVLink>
-      <div>
-          Total Orders : {this.state.totalOrders}
-      </div>
+         </div>
       <Table>
         <Table.Header>
         <Table.Row>
