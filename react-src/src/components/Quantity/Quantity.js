@@ -392,6 +392,15 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
+                "productName": "Radish / Mullangi",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
                 "productName": "Apple Ber / Gangaregu",
                 "qty": 0,
                 "baseQty": 0.5,
