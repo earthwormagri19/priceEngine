@@ -230,15 +230,6 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
-                "productName": "Curry Leaves",
-                "qty": 0,
-                "baseQty": 1,
-                "totalQty": 0,
-                "unit": "Bunch",
-                "packingList": [],
-                "OrderList": []
-            },
-            {
                 "productName": "Beetroot",
                 "qty": 0,
                 "baseQty": 0.5,
@@ -451,6 +442,24 @@ class Quantity extends Component {
                 "baseQty": 1,
                 "totalQty": 0,
                 "unit": "Pc",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Curry Leaves",
+                "qty": 0,
+                "baseQty": 1,
+                "totalQty": 0,
+                "unit": "Bunch",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Dosakaya",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
                 "packingList": [],
                 "OrderList": []
             }
