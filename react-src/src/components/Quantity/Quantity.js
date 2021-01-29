@@ -516,6 +516,15 @@ class Quantity extends Component {
                 "unit": "Kg",
                 "packingList": [],
                 "OrderList": []
+            },
+            {
+                "productName": "Pachi Batani / Green Peas Pods",
+                "qty": 0,
+                "baseQty": 0.25,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
             }
             ];
             var confirmedOrders = 0;
