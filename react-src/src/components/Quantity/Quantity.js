@@ -525,6 +525,24 @@ class Quantity extends Component {
                 "unit": "Kg",
                 "packingList": [],
                 "OrderList": []
+            },
+            {
+                "productName": "Chinthapandu / Tamarind",
+                "qty": 0,
+                "baseQty": 0.25,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Puntikura / Red Sorrel",
+                "qty": 0,
+                "baseQty": 0.25,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
             }
             ];
             var confirmedOrders = 0;
