@@ -52,7 +52,7 @@ class Quantity extends Component {
             {
                 "productName": "Ladies finger ",
                 "qty": 0,
-                "baseQty": 0.25,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -196,7 +196,7 @@ class Quantity extends Component {
             {
                 "productName": "Beerakaya / Ridge gourd",
                 "qty": 0,
-                "baseQty": 0.25,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -242,6 +242,7 @@ class Quantity extends Component {
                 "productName": "Carrot",
                 "qty": 0,
                 "baseQty": 0.25,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -286,7 +287,7 @@ class Quantity extends Component {
             {
                 "productName": "Pedda Chikkudu",
                 "qty": 0,
-                "baseQty": 0.25,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
