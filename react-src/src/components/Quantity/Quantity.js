@@ -241,7 +241,6 @@ class Quantity extends Component {
             {
                 "productName": "Carrot",
                 "qty": 0,
-                "baseQty": 0.25,
                 "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
