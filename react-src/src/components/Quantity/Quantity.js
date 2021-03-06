@@ -176,6 +176,15 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
+                "productName": "Broccoli",
+                "qty": 0,
+                "baseQty": 1,
+                "totalQty": 0,
+                "unit": "Pc",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
                 "productName": "Dondakaya / Tindora",
                 "qty": 0,
                 "baseQty": 0.5,
@@ -442,6 +451,33 @@ class Quantity extends Component {
                 "baseQty": 2,
                 "totalQty": 0,
                 "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "99 Veg Combo (9 Items)",
+                "qty": 0,
+                "baseQty": 1,
+                "totalQty": 0,
+                "unit": "Basket",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "199 Veg Combo (17 Items )",
+                "qty": 0,
+                "baseQty": 1,
+                "totalQty": 0,
+                "unit": "Basket",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "299 Veg Combo ( 20 Items )",
+                "qty": 0,
+                "baseQty": 1,
+                "totalQty": 0,
+                "unit": "Basket",
                 "packingList": [],
                 "OrderList": []
             },
