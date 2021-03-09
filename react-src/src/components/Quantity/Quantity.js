@@ -563,6 +563,24 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
+                "productName": "Chukka kura / Indian Sorrel",
+                "qty": 0,
+                "baseQty": 0.25,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Gangavayil kura / Purslane Leaves",
+                "qty": 0,
+                "baseQty": 0.25,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
                 "productName": "Chinthapandu / Tamarind",
                 "qty": 0,
                 "baseQty": 0.25,
