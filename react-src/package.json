@@ -28,7 +28,7 @@
     "html-webpack-plugin": "2.29.0",
     "html2canvas": "^1.0.0-rc.5",
     "jest": "20.0.4",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.0.0",
     "postcss-loader": "2.0.6",
