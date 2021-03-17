@@ -581,6 +581,15 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
+                "productName": "Mamidikaya / Raw Mango",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
                 "productName": "Chinthapandu / Tamarind",
                 "qty": 0,
                 "baseQty": 0.25,
