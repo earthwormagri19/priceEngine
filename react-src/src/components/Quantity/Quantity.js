@@ -266,6 +266,24 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
+                "productName": "Thati Munjalu / Ice Apple",
+                "qty": 0,
+                "baseQty": 1,
+                "totalQty": 0,
+                "unit": "Dozen",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Mamidikaya / Raw Mango",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
                 "productName": "Pomegranate",
                 "qty": 0,
                 "baseQty": 0.5,
