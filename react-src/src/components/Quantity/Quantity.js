@@ -34,7 +34,7 @@ class Quantity extends Component {
             {
                 "productName": "Tomato-Local",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 1,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -43,7 +43,7 @@ class Quantity extends Component {
             {
                 "productName": "Brinjal",
                 "qty": 0,
-                "baseQty": 0.25,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -70,7 +70,7 @@ class Quantity extends Component {
             {
                 "productName": "Cluster Beans / Goru Chikkudukaya",
                 "qty": 0,
-                "baseQty": 0.25,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -196,7 +196,7 @@ class Quantity extends Component {
             {
                 "productName": "Green Chillies",
                 "qty": 0,
-                "baseQty": 0.25,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -304,7 +304,7 @@ class Quantity extends Component {
             {
                 "productName": "Kakarakaya",
                 "qty": 0,
-                "baseQty": 0.25,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -340,7 +340,7 @@ class Quantity extends Component {
             {
                 "productName": "Green Brinjal",
                 "qty": 0,
-                "baseQty": 0.25,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -358,7 +358,7 @@ class Quantity extends Component {
             {
                 "productName": "Capsicum",
                 "qty": 0,
-                "baseQty": 0.25,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
