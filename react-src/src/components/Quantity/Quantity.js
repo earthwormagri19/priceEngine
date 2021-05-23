@@ -284,9 +284,18 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
-                "productName": "Banganapalli Mangoes Box - 2 Kg",
+                "productName": "Banganapalli Mangoes Box -2 Kg",
                 "qty": 0,
                 "baseQty": 2,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Banganapalli Mangoes Box -4 Kg",
+                "qty": 0,
+                "baseQty": 4,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
