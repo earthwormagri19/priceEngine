@@ -11,7 +11,9 @@ router.get('/', (req, res) => {
         key_secret: 'XOGecDTCGrVkZ4bDni9CaKHs'
     });
     instance.payments
-    .all()
+    .all({
+        count: 50
+    })
     .then(result => {
         var payments = result.items;
         payments.forEach(element => {
