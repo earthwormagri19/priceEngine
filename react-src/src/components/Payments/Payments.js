@@ -37,6 +37,7 @@ class Quantity extends Component {
                   <Table.Row>
                       <Table.Cell>{item.id}</Table.Cell>
                       <Table.Cell>{item.amount}</Table.Cell>
+                      <Table.Cell>{item.contact}</Table.Cell>
                       <Table.Cell>{this.formatDate(item.created_at)}</Table.Cell>
                       <Table.Cell>{item.description}</Table.Cell>
                       <Table.Cell>{item.method}</Table.Cell>
@@ -66,6 +67,7 @@ class Quantity extends Component {
           <Table.Row>
             <Table.HeaderCell>Payment Id</Table.HeaderCell>
             <Table.HeaderCell>Amount</Table.HeaderCell>
+            <Table.HeaderCell>Mobile No</Table.HeaderCell>
             <Table.HeaderCell>Date</Table.HeaderCell>
             <Table.HeaderCell>Description</Table.HeaderCell>
             <Table.HeaderCell>Method</Table.HeaderCell>
