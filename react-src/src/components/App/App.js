@@ -97,22 +97,24 @@ class App extends Component {
 
     return (
       <div>
-        <div className='App'>
+        {/* <div className='App'>
           <div className='App-header'>
             <img src={logo} className='App-logo' alt='logo' />
             <h1 className='App-intro'>Earthworm Operations</h1>
           </div>
-        </div>
-        { login && <Login 
+        </div> */}
+        {/* { login && <Login 
         handleClick={this.handleClick} 
         handleInputChange={this.handleInputChange}
         email={email}
         password={ password }
         errorMessage= {errorMessage}
         />}
-        { navigation && <Router>
-          <div className="Nav-header">
-            <nav>
+        { navigation &&  */}
+        
+        <Router>
+          <div className="Nav-header1">
+            {/* <nav>
               <ul className='Nav-bar'>
                 {/* <li>
                   <Link to="/orders">Orders</Link>
@@ -120,14 +122,14 @@ class App extends Component {
                 {/* <li>
                   <Link to="/rates">View/Update Rates</Link>
                 </li> */}
-                <li>
+                {/* <li>
                   <Link to="/quantity">Total Quantity/Delivery list</Link>
                 </li>
                 <li>
                   <Link to="/payments">Payments</Link>
                 </li>
-              </ul>
-            </nav>
+              </ul> */}
+            {/* </nav> ** */}
             <Switch>
               <Route path="/orders">
                 <Orders />
@@ -143,7 +145,8 @@ class App extends Component {
               </Route>
             </Switch>
           </div>
-        </Router>}
+        </Router>
+        {/* } */}
       </div>
     );
   }
