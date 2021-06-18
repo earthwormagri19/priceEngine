@@ -18,7 +18,9 @@ class Quantity extends Component {
            cashOrders : 0,
            loading: false,
            records: [],
-           transList: []
+           transList: [],
+           totalOnline: 0,
+           totalCash: 0
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange= this.handleInputChange.bind(this);
@@ -34,7 +36,7 @@ class Quantity extends Component {
             {
                 "productName": "Tomato-Local",
                 "qty": 0,
-                "baseQty": 1,
+                "baseQty": 0.5,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -52,7 +54,7 @@ class Quantity extends Component {
             {
                 "productName": "Ladies finger ",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -70,7 +72,7 @@ class Quantity extends Component {
             {
                 "productName": "Cluster Beans / Goru Chikkudukaya",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -187,7 +189,7 @@ class Quantity extends Component {
             {
                 "productName": "Dondakaya / Tindora",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -196,7 +198,7 @@ class Quantity extends Component {
             {
                 "productName": "Green Chillies",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -205,7 +207,7 @@ class Quantity extends Component {
             {
                 "productName": "Beerakaya / Ridge gourd",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -322,7 +324,7 @@ class Quantity extends Component {
             {
                 "productName": "Kakarakaya",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -376,7 +378,7 @@ class Quantity extends Component {
             {
                 "productName": "Capsicum",
                 "qty": 0,
-                "baseQty": 0.5,
+                "baseQty": 0.25,
                 "totalQty": 0,
                 "unit": "Kg",
                 "packingList": [],
@@ -646,14 +648,23 @@ class Quantity extends Component {
             ];
             var confirmedOrders = 0;
             const records = [];
+            var totalOnline = 0;
+            var totalCash = 0;
             orders.forEach(function(value){
                 if(value.status === 'Confirmed'){
+                    
                     confirmedOrders++
                     var items = value.service_name;
                     var amount = 0;
                     value.service_name.forEach(function(item){
                     amount = amount+item.product_price;
                     });
+                    if(value.payment_mode === 'online') {
+                        totalOnline = totalOnline + amount;
+                    }
+                    else {
+                        totalCash  = totalCash + amount;
+                    }
                     products.forEach(function(product){
                         items.forEach(function(item){
                             if(item.product_name === product.productName) {
@@ -715,7 +726,9 @@ class Quantity extends Component {
                 products: products,
                 records: records,
                 transList: transList,
-                packingList: packingList
+                packingList: packingList,
+                totalCash: totalCash,
+                totalOnline: totalOnline
             });
         })
         .catch((err) => {
@@ -763,6 +776,18 @@ class Quantity extends Component {
                 <Icon name='shopping basket' />  Total Orders 
                 <Label color='teal' floating>
                     {this.state.totalOrders}
+                </Label>
+                </Menu.Item>
+                <Menu.Item as='b'>
+                <Icon name='shopping basket' />  Cash Sales 
+                <Label color='teal' floating>
+                    {this.state.totalCash}
+                </Label>
+                </Menu.Item>
+                <Menu.Item as='c'>
+                <Icon name='shopping basket' />  Online Sales 
+                <Label color='teal' floating>
+                    {this.state.totalOnline}
                 </Label>
                 </Menu.Item>
             </Menu>
