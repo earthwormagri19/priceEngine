@@ -20,7 +20,8 @@ class Quantity extends Component {
            records: [],
            transList: [],
            totalOnline: 0,
-           totalCash: 0
+           totalCash: 0,
+           instantOrders: []
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange= this.handleInputChange.bind(this);
@@ -650,38 +651,55 @@ class Quantity extends Component {
             const records = [];
             var totalOnline = 0;
             var totalCash = 0;
+            var instantOrders = [];
             orders.forEach(function(value){
-                if(value.status === 'Confirmed'){
-                    
-                    confirmedOrders++
-                    var items = value.service_name;
-                    var amount = 0;
-                    value.service_name.forEach(function(item){
-                    amount = amount+item.product_price;
-                    });
-                    if(value.payment_mode === 'online') {
-                        totalOnline = totalOnline + amount;
+                if(value.status === 'Confirmed') { 
+                    if(value.order_id && value.order_id.substring(0, 3) !== 'ZFI'){
+                        
+                        confirmedOrders++
+                        var items = value.service_name;
+                        var amount = 0;
+                        value.service_name.forEach(function(item){
+                        amount = amount+item.product_price;
+                        });
+                        if(value.payment_mode === 'online') {
+                            totalOnline = totalOnline + amount;
+                        }
+                        else {
+                            totalCash  = totalCash + amount;
+                        }
+                        products.forEach(function(product){
+                            items.forEach(function(item){
+                                if(item.product_name === product.productName) {
+                                    product.qty = product.qty + item.product_quantity;
+                                    product.packingList.push(item.product_quantity*product.baseQty + ' '+ product.unit);
+                                    product.totalQty = product.qty * product.baseQty;
+                                }
+                            });
+                        });
+                        records.push({
+                            'Order Id': value.order_id,
+                            'Customer Name': value.cust_name,
+                            'Mobile No': value.cust_mobile_no,
+                            'Customer Address': value.cust_servicing_address,
+                            'Invoice amount': amount,
+                            'Actual amount': '',
+                            'Payment': value.payment_mode    
+                        });
                     }
                     else {
-                        totalCash  = totalCash + amount;
+                        instantOrders.push({
+                            'Order Id': value.order_id,
+                            'Customer Name': value.cust_name,
+                            'Mobile No': value.cust_mobile_no,
+                            'Customer Address': value.cust_servicing_address,
+                            'Invoice amount': amount,
+                            'Actual amount': '',
+                            'Payment': value.payment_mode    
+                        }); 
                     }
-                    products.forEach(function(product){
-                        items.forEach(function(item){
-                            if(item.product_name === product.productName) {
-                                product.qty = product.qty + item.product_quantity;
-                                product.packingList.push(item.product_quantity*product.baseQty + ' '+ product.unit);
-                                product.totalQty = product.qty * product.baseQty;
-                            }
-                        });
-                    });
-                    records.push({
-                    'Customer Name': value.cust_name,
-                    'Mobile No': value.cust_mobile_no,
-                    'Customer Address': value.cust_servicing_address,
-                    'Amount': amount,
-                    'Payment': value.payment_mode    
-                    });
                 }
+
             });
             const transList = [];
             const packingList = [];
@@ -728,7 +746,8 @@ class Quantity extends Component {
                 transList: transList,
                 packingList: packingList,
                 totalCash: totalCash,
-                totalOnline: totalOnline
+                totalOnline: totalOnline,
+                instantOrders: instantOrders
             });
         })
         .catch((err) => {
@@ -815,12 +834,20 @@ class Quantity extends Component {
             Procurement & Packing list
          </CSVLink>
         <CSVLink 
-            filename={"delivery_list.csv"}
+            filename={"regular_delivery_list.csv"}
             className="ui  button"
             target="_blank" 
             data={this.state.records}
         >
-            Delivery list
+            Regular Delivery list
+         </CSVLink>
+         <CSVLink 
+            filename={"instant_delivery_list.csv"}
+            className="ui  button"
+            target="_blank" 
+            data={this.state.instantOrders}
+        >
+            Instant Delivery list
          </CSVLink>
          </div>
       <Table>
