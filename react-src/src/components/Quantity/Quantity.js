@@ -98,6 +98,15 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
+                "productName": "Corn",
+                "qty": 0,
+                "baseQty": 6,
+                "totalQty": 0,
+                "unit": "Pc",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
                 "productName": "Potato",
                 "qty": 0,
                 "baseQty": 0.5,
