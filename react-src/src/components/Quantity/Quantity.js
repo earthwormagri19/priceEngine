@@ -179,6 +179,15 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
+                "productName": "Danimma / Pomegranate",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
                 "productName": "Lemon - Small",
                 "qty": 0,
                 "baseQty": 6,
