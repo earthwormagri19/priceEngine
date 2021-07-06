@@ -188,6 +188,42 @@ class Quantity extends Component {
                 "OrderList": []
             },
             {
+                "productName": "Urad dal / Minapa pappu ",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Chana dal / Shenaga pappu ",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Moong dal / Pesara pappu ",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
+                "productName": "Toor dal / Kandhi pappu",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+                "OrderList": []
+            },
+            {
                 "productName": "Lemon - Small",
                 "qty": 0,
                 "baseQty": 6,
@@ -785,6 +821,9 @@ class Quantity extends Component {
     return (
        <div className="body-container">
         <Form onSubmit={this.handleSubmit} className="form-input">
+            <div>
+                v2.0
+            </div>
             <Form.Input
             label='Order Id (From)'
             type='text'
