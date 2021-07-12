@@ -862,7 +862,7 @@ class Quantity extends Component {
        <div className="body-container">
         <Form onSubmit={this.handleSubmit} className="form-input">
             <div>
-                v2.0
+                v2.1
             </div>
             <Form.Input
             label='Order Id (From)'
