@@ -699,6 +699,46 @@ class Quantity extends Component {
                 "unit": "Kg",
                 "packingList": [],
                 "OrderList": []
+            },
+            {
+                "productName": "verusanagalu / Groundnut",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+            },
+            {
+                "productName": "Putna Dal",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+            },
+            {
+                "productName": "Maasoor Dal / Erra pappu",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+            },
+            {
+                "productName": "Milky Mushroom / Pala Puttagodugulu",
+                "qty": 0,
+                "baseQty": 0.2,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
+            },
+            {
+                "productName": "jamakaya / Guava",
+                "qty": 0,
+                "baseQty": 0.5,
+                "totalQty": 0,
+                "unit": "Kg",
+                "packingList": [],
             }
             ];
             var confirmedOrders = 0;
